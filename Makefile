@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/06/18 12:09:24 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/06/18 22:24:42 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,11 @@ CC			= cc
 CFLAGS	= -Wall -Wextra -Werror
 RM			= rm -rf
 
-SRCS		= ft_printf.c
+SRCS		= ft_printf.c \
+					ftp_split.c \
+					ftp_numofconvs.c \
+					ftp_simplescan.c
+
 
 OBJ_DIR		= obj
 OBJS			= $(SRCS:%.c=$(OBJ_DIR)/%.o)
@@ -41,11 +45,11 @@ $(LIBFT):
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-test: $(NAME) test_printf.c
-	$(CC) $(CFLAGS) -o test_printf test_printf.c $(LIBFT) libftprintf.a
+test: $(NAME) tests/test_ftprintf.c
+	$(CC) $(CFLAGS) -o tests/test_ftprintf tests/test_ftprintf.c $(LIBFT) libftprintf.a
 	@echo "Running test_printf..."
 	@echo
-	@./test_printf
+	@./tests/test_ftprintf
 
 clean:
 	make -C $(LIBFT_PATH) clean
