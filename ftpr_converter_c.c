@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftp_converter_s.c                                  :+:      :+:    :+:   */
+/*   ftpr_converter_c.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 23:27:52 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/20 23:33:09 by fmaurer          ###   ########.fr       */
+/*   Created: 2024/06/21 11:51:21 by fmaurer           #+#    #+#             */
+/*   Updated: 2024/06/21 11:51:23 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftp_printf.h"
+#include "ftpr_printf.h"
 
-int	ftp_converter_s(char *str)
+int	ftpr_converter_c(int i)
 {
-	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
+	ft_putchar_fd(i, 1);
+	return (1);
 }
+

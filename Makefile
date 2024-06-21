@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/06/21 09:08:10 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/06/21 11:48:21 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,16 @@ CC			= cc
 CFLAGS	= -Wall -Wextra -Werror
 RM			= rm -rf
 
-SRCS		= ftp_printf.c \
-					ftp_numofconvs.c \
-					ftp_simplescan.c \
-					ftp_converter_c.c \
-					ftp_converter_s.c \
-					ftp_converter_d.c \
-					ftp_convert_smpl.c \
-					ftp_isconv.c
+SRCS		= ftpr_printf.c \
+					ftpr_utils.c \
+					ftpr_numofconvs.c \
+					ftpr_simplescan.c \
+					ftpr_converter_c.c \
+					ftpr_converter_s.c \
+					ftpr_converter_d.c \
+					ftpr_convert_flagged.c \
+					ftpr_convert_smpl.c \
+					ftpr_isconv.c
 
 
 OBJ_DIR		= obj

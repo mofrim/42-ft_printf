@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ftpr_printf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:43:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/18 17:27:12 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/21 11:52:27 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include "ftp_printf.h"
+#include "ftpr_printf.h"
 #include <stdio.h>
 
-int	ftp_parse_args(va_list args, char *fmt_str)
+int	ftpr_parse_args(va_list args, char *fmt_str)
 {
 	int	i;
-	i = ftp_simplescan(args, fmt_str);
+	i = ftpr_simplescan(args, fmt_str);
 	return (i);
 }
 
@@ -33,7 +33,7 @@ int	ft_printf(const char *fmt, ...)
 	if (!fmt_str || !*fmt_str)
 		return (0);
 	va_start(args, fmt);
-	printed = ftp_parse_args(args, fmt_str);
+	printed = ftpr_parse_args(args, fmt_str);
 	va_end(args);
 	free(fmt_str);
 	return (printed);

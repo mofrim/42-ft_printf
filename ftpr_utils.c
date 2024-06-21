@@ -1,41 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftp_numofconvs.c                                   :+:      :+:    :+:   */
+/*   ftpr_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 17:03:26 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/18 17:05:17 by fmaurer          ###   ########.fr       */
+/*   Created: 2024/06/21 09:39:47 by fmaurer           #+#    #+#             */
+/*   Updated: 2024/06/21 11:52:44 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ftpr_printf.h"
 
-// number of conversions in string given.
-int	ftp_numofconvs(const char *s, const char **c)
+void	ft_putchar(char c)
 {
-	char		*p;
-	const char	*sb;
-	int			nc;
-	int			i;
-
-	nc = 0;
-	i = 0;
-	sb = s;
-	while (c[i])
-	{
-		p = ft_strnstr(s, c[i], ft_strlen(s));
-		if (p)
-		{
-			nc++;
-			s = p + ft_strlen(c[i]);
-		}
-		if (!p)
-		{
-			i++;
-			s = sb;
-		}
-	}
-	return (nc);
+	ft_putchar_fd(c, 1);
 }
