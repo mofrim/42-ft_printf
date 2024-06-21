@@ -1,17 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_convert_smpl_cds.c                            :+:      :+:    :+:   */
+/*   ftpr_convert_smpl_cdsi.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:18:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/21 12:19:09 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/21 12:31:27 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ftpr_printf.h"
+
+int	ftpr_converter_i(int i)
+{
+	char	*num;
+	int		r;
+
+	num = ft_itoa(i);
+	ft_putstr_fd(num, 1);
+	r = ft_strlen(num);
+	free(num);
+	return (r);
+}
 
 int	ftpr_converter_d(int i)
 {
