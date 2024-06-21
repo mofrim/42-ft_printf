@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include "ft_printf.h"
+#include "ftp_printf.h"
 #include <stdio.h>
 
 int	ftp_parse_args(va_list args, char *fmt_str)

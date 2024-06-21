@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ftp_printf.h"
 
 
 int	ftp_flag_cond(const char *s)
