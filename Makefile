@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/06/21 11:48:21 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/06/21 12:24:11 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,9 @@ RM			= rm -rf
 
 SRCS		= ftpr_printf.c \
 					ftpr_utils.c \
-					ftpr_numofconvs.c \
-					ftpr_simplescan.c \
-					ftpr_converter_c.c \
-					ftpr_converter_s.c \
-					ftpr_converter_d.c \
-					ftpr_convert_flagged.c \
+					ftpr_parse_args.c \
+					ftpr_convert_smpl_cds.c \
+					ftpr_convert_flag.c \
 					ftpr_convert_smpl.c \
 					ftpr_isconv.c
 

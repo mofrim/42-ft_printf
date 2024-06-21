@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_simplescan.c                                  :+:      :+:    :+:   */
+/*   ftpr_parse_args.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:23:09 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/21 11:52:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/21 12:22:35 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ftpr_printf.h"
 #include "libft/libft.h"
 
-int	ftpr_simplescan(va_list args, char *fmt_str)
+int	ftpr_parse_args(va_list args, char *fmt_str)
 {
 	int	c;
 	int	r;
@@ -21,6 +21,11 @@ int	ftpr_simplescan(va_list args, char *fmt_str)
 	r = 0;
 	while (*fmt_str)
 	{
+		// TODO: maybe init flags right here
+		//
+		// t_flags flags;
+		//
+		// init_flags(flags);
 		c = ftpr_is_conversion(fmt_str);
 		if (c >= 0)
 		{
@@ -28,7 +33,7 @@ int	ftpr_simplescan(va_list args, char *fmt_str)
 			fmt_str += 2;
 		}
 		// if (c < 0)
-		// 	fmt_str += ftpr_converter_flagged(...);
+		// 	fmt_str += ftpr_convert_flag(flags, args, c, &r);
 		else
 		{
 			ft_putchar_fd(*fmt_str, 1);

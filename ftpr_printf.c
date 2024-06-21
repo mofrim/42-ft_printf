@@ -6,20 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:43:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/21 11:52:27 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/21 12:22:24 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ftpr_printf.h"
-#include <stdio.h>
-
-int	ftpr_parse_args(va_list args, char *fmt_str)
-{
-	int	i;
-	i = ftpr_simplescan(args, fmt_str);
-	return (i);
-}
 
 int	ft_printf(const char *fmt, ...)
 {
