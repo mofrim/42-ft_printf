@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:23:09 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/21 12:22:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/21 12:51:56 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ int	ftpr_parse_args(va_list args, char *fmt_str)
 		// t_flags flags;
 		//
 		// init_flags(flags);
+		//
+		// TODO: refactor: there will be only one conversion function in the
+		// end. maybe... or just pull through with my split approach. results in
+		// more code to be written but maybe less brain to be used.
 		c = ftpr_is_conversion(fmt_str);
 		if (c >= 0)
 		{

@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/06/21 12:34:51 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/06/22 11:12:07 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRCS		= ftpr_printf.c \
 					ftpr_utoa.c \
 					ftpr_parse_args.c \
 					ftpr_convert_smpl_cdsi.c \
+					ftpr_convert_smpl_p.c \
+					ftpr_convert_smpl_x.c \
 					ftpr_convert_flag.c \
 					ftpr_convert_smpl.c \
 					ftpr_isconv.c
@@ -50,7 +52,8 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 test: $(NAME) tests/test_ftprintf.c
-	$(CC) $(CFLAGS) -o tests/test_ftprintf tests/test_ftprintf.c $(LIBFT) libftprintf.a
+	# $(CC) $(CFLAGS) -o tests/test_ftprintf tests/test_ftprintf.c $(LIBFT) libftprintf.a
+	$(CC) -o tests/test_ftprintf tests/test_ftprintf.c $(LIBFT) libftprintf.a
 	@echo "Running test_printf..."
 	@echo
 	@./tests/test_ftprintf

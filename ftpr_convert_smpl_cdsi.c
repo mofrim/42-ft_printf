@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:18:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/21 12:31:27 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/22 10:36:52 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ftpr_converter_i(int i)
 	int		r;
 
 	num = ft_itoa(i);
-	ft_putstr_fd(num, 1);
+	ft_putstr(num);
 	r = ft_strlen(num);
 	free(num);
 	return (r);
@@ -31,7 +31,19 @@ int	ftpr_converter_d(int i)
 	int		r;
 
 	num = ft_itoa(i);
-	ft_putstr_fd(num, 1);
+	ft_putstr(num);
+	r = ft_strlen(num);
+	free(num);
+	return (r);
+}
+
+int	ftpr_converter_u(unsigned int i)
+{
+	char	*num;
+	int		r;
+
+	num = ftpr_utoa(i);
+	ft_putstr(num);
 	r = ft_strlen(num);
 	free(num);
 	return (r);

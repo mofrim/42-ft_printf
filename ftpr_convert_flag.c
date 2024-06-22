@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:51:46 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/21 12:20:46 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/21 12:46:23 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ char	ftpr_isvalid_flag(char c)
 
 int	ftpr_collect_flags(const char *s, t_flags *flags)
 {
-	if 
+	(void)flags;
+	(void)s;
+	return (0);
 }
 
 // is there a combination of valid flags that is not valid?
@@ -52,5 +54,6 @@ int	ftpr_is_flagged_conv(const char *s)
 	if (*s != '%')
 		return (0);
 	if (*s == '%' && ftpr_isvalid_flag(*(s+1)))
-
+		return (0);
+	return (0);
 }
