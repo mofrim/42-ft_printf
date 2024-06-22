@@ -6,13 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:02:49 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/17 10:31:43 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/22 12:20:22 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// \o/ extra careful version \o/
+// extra careful version
 //
 // seperating call to `f` from the allocation of new list element. the problem:
 // if we call:
