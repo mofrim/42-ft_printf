@@ -6,13 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/22 11:20:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/22 12:15:23 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static const char	*g_convs_smpl[] = {"%c", "%s", "%p", "%d", "%i", "%u", \
+static const char	*g_convs_smpl[] = {"%c", "%s", "%p", "%d", "%i", "%u",
 	"%x", "%X", "%%", NULL};
 
 int	ftpr_is_smpl_conv(const char *s)

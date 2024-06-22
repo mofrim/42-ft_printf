@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 10:17:25 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/22 12:11:52 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/22 12:13:15 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ int	ftpr_converter_p(unsigned long l)
 
 	num = ftpr_hextoa_prefix(l);
 	if (!num)
-	{
-		free(num);
 		return (0);
-	}
 	ft_putstr(num);
 	r = ft_strlen(num);
 	free(num);
