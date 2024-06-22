@@ -6,13 +6,12 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 10:17:25 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/22 11:03:03 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/22 11:19:02 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ftpr_printf.h"
 #include "libft/libft.h"
-
 
 int	ftpr_hex_digits(unsigned long n)
 {
@@ -48,7 +47,7 @@ char	*ftpr_hextoa_prefix(unsigned long n)
 		if (n % 16 < 10)
 			a[i] = '0' + n % 16;
 		else
-			a[i] = 'a' + (n % 16 - 10) ;
+			a[i] = 'a' + (n % 16 - 10);
 		n /= 16;
 	}
 	return (a);

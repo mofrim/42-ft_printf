@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 11:03:27 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/22 11:09:19 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/22 11:20:07 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static char	*ftpr_hextoa_int(unsigned int n, int upper)
 		if (n % 16 < 10)
 			a[i] = '0' + n % 16;
 		else if (upper)
-			a[i] = 'A' + (n % 16 - 10) ;
+			a[i] = 'A' + (n % 16 - 10);
 		else
-			a[i] = 'a' + (n % 16 - 10) ;
+			a[i] = 'a' + (n % 16 - 10);
 		n /= 16;
 	}
 	return (a);
@@ -62,7 +62,7 @@ int	ftpr_converter_x(unsigned int i)
 	return (r);
 }
 
-int	ftpr_converter_X(unsigned int i)
+int	ftpr_converter_xupper(unsigned int i)
 {
 	char	*num;
 	int		r;

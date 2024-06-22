@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:51:46 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/21 12:46:23 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/22 11:18:21 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ char	ftpr_isvalid_flag(char c)
 		c == '0' || ft_isdigit(c))
 		return (c);
 	return (0);
-
 }
 
 int	ftpr_collect_flags(const char *s, t_flags *flags)
@@ -53,7 +52,7 @@ int	ftpr_is_flagged_conv(const char *s)
 {
 	if (*s != '%')
 		return (0);
-	if (*s == '%' && ftpr_isvalid_flag(*(s+1)))
+	if (*s == '%' && ftpr_isvalid_flag(*(s + 1)))
 		return (0);
 	return (0);
 }

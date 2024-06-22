@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:11 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/21 11:52:13 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/22 11:21:08 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,3 @@ int	ftpr_is_conversion(const char *s)
 		return (-2);
 	return (-1);
 }
-

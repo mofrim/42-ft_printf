@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:45:15 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/22 11:10:08 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/22 11:20:41 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 # include <stdarg.h>
 
 typedef struct s_flags {
-	int conv;
-	int hashtag;
-	int plus;
-	int minus;
-	int zero;
-	int prec;
-	int space;
-	int width;
-	int star;
+	int	conv;
+	int	hashtag;
+	int	plus;
+	int	minus;
+	int	zero;
+	int	prec;
+	int	space;
+	int	width;
+	int	star;
 }	t_flags;
 
 //utils
@@ -48,7 +48,7 @@ int		ftpr_converter_d(int i);
 int		ftpr_converter_u(unsigned int i);
 int		ftpr_converter_p(unsigned long l);
 int		ftpr_converter_x(unsigned int i);
-int		ftpr_converter_X(unsigned int i);
+int		ftpr_converter_xupper(unsigned int i);
 
 int		ftpr_is_flagged_conv(const char *s);
 #endif
