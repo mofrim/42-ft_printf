@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 10:17:25 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/22 11:19:02 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/22 12:11:52 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ftpr_hextoa_prefix(unsigned long n)
 
 	if (!n)
 		return (ft_strdup("(nil)"));
-	a = (char *)malloc(ftpr_hex_digits(n) * sizeof (char) + 1 + 2);
+	a = (char *)ft_calloc(ftpr_hex_digits(n) + 3, sizeof(char));
 	if (!a)
 		return (NULL);
 	a[ftpr_hex_digits(n)] = '\0';
@@ -60,6 +60,11 @@ int	ftpr_converter_p(unsigned long l)
 	int		r;
 
 	num = ftpr_hextoa_prefix(l);
+	if (!num)
+	{
+		free(num);
+		return (0);
+	}
 	ft_putstr(num);
 	r = ft_strlen(num);
 	free(num);
