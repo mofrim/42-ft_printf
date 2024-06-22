@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/06/22 11:27:45 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/06/22 11:31:30 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,6 @@ $(OBJ_DIR)/%.o: %.c
 
 all: $(NAME)
 
-bonus: all
-
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS)
 	cp $(LIBFT) $(NAME)
 	ar -rcs $(NAME) $(OBJS)
@@ -68,4 +66,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re libft test
+.PHONY: all clean fclean re libft test
