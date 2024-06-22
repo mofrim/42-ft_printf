@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftpr_printf.h"
+#include "ft_printf.h"
 #include "libft/libft.h"
 
 // TODO: maybe init flags right here

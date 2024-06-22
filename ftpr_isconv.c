@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftpr_printf.h"
+#include "ft_printf.h"
 
 // check if substr at `s` is a simple conv or flagged conv
 // Return Values:

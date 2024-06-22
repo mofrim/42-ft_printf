@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/06/22 11:12:07 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/06/22 11:27:45 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC			= cc
 CFLAGS	= -Wall -Wextra -Werror
 RM			= rm -rf
 
-SRCS		= ftpr_printf.c \
+SRCS		= ft_printf.c \
 					ftpr_utils.c \
 					ftpr_utoa.c \
 					ftpr_parse_args.c \

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftpr_printf.h"
+#include "ft_printf.h"
 
 static const char	*g_convs_smpl[] = {"%c", "%s", "%p", "%d", "%i", "%u", \
 	"%x", "%X", "%%", NULL};
