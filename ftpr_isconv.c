@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:11 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/22 11:21:08 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/06/24 08:07:43 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // Return Values:
 // 		-1	no conv
 // 		0-...	simple conv index of conv in global
-// 		-2	flagged conv
 int	ftpr_is_conversion(const char *s)
 {
 	int	i;
@@ -24,7 +23,5 @@ int	ftpr_is_conversion(const char *s)
 	i = ftpr_is_smpl_conv(s);
 	if (i >= 0)
 		return (i);
-	if (ftpr_is_flagged_conv(s))
-		return (-2);
 	return (-1);
 }

@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/06/22 11:31:30 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/06/24 08:09:29 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,8 @@ SRCS		= ft_printf.c \
 					ftpr_convert_smpl_cdsi.c \
 					ftpr_convert_smpl_p.c \
 					ftpr_convert_smpl_x.c \
-					ftpr_convert_flag.c \
 					ftpr_convert_smpl.c \
 					ftpr_isconv.c
-
 
 OBJ_DIR		= obj
 OBJS			= $(SRCS:%.c=$(OBJ_DIR)/%.o)
@@ -49,13 +47,6 @@ $(LIBFT):
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-test: $(NAME) tests/test_ftprintf.c
-	# $(CC) $(CFLAGS) -o tests/test_ftprintf tests/test_ftprintf.c $(LIBFT) libftprintf.a
-	$(CC) -o tests/test_ftprintf tests/test_ftprintf.c $(LIBFT) libftprintf.a
-	@echo "Running test_printf..."
-	@echo
-	@./tests/test_ftprintf
-
 clean:
 	make -C $(LIBFT_PATH) clean
 	rm -rf $(OBJ_DIR)
@@ -66,4 +57,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re libft test
+.PHONY: all clean fclean re $(LIBFT)
