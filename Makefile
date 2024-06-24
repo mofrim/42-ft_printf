@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/06/24 11:00:15 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/06/24 12:34:05 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,4 +60,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re $(LIBFT)
+.PHONY: all clean fclean re
