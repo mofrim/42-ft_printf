@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/06/24 10:16:17 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/06/24 11:00:15 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,12 +32,14 @@ OBJS			= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 LIBFT_PATH	= ./libft
 LIBFT				= $(LIBFT_PATH)/libft.a
 
-$(OBJ_DIR)/%.o: %.c
+# here $(OBJ_DIR) is a 'order-only' prequisite. that means it is only build if
+# it does not exist. not if it was only updated. this is what we want here.
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJS)
+$(NAME): $(OBJS)
 	make -C $(LIBFT_PATH) all
 	cp $(LIBFT) $(NAME)
 	ar -rcs $(NAME) $(OBJS)
