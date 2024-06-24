@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/06/24 08:09:29 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/06/24 10:16:17 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ $(OBJ_DIR)/%.o: %.c
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS)
+$(NAME): $(OBJ_DIR) $(OBJS)
+	make -C $(LIBFT_PATH) all
 	cp $(LIBFT) $(NAME)
 	ar -rcs $(NAME) $(OBJS)
 
