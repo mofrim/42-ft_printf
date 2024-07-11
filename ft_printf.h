@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:45:15 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/11 10:04:25 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/11 13:23:11 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ftpr_parse_args(va_list args, const char *fmt);
 
 int		ftpr_is_conversion(const char *s);
 int		ftpr_is_smpl_conv(const char *s);
-void	ftpr_convert_smpl(va_list args, int conv_index, int *r);
+void	ftpr_convert_smpl(va_list args, const char *s, int *r);
 int		ftpr_converter_c(int i);
 int		ftpr_converter_s(char *str);
 int		ftpr_converter_d(int i);
