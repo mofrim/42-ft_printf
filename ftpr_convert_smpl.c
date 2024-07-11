@@ -6,12 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/11 10:20:09 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/11 10:51:14 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+// oh i feel so dirty...
 static const char	*g_convs_smpl[] = {"%c", "%s", "%p", "%d", "%i", "%u",
 	"%x", "%X", "%%", NULL};
 
