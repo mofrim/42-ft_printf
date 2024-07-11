@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/11 10:20:44 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/11 10:24:00 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ RM			= rm -rf
 SRCS		= ft_printf.c \
 					ftpr_utils.c \
 					ftpr_utoa.c \
-					ftpr_parse_args.c \
 					ftpr_convert_smpl_cdsi.c \
 					ftpr_convert_smpl_p.c \
 					ftpr_convert_smpl_x.c \
