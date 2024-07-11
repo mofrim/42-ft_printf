@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/11 10:24:00 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/11 14:27:30 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME	=	libftprintf.a
 
 CC			= cc
 CFLAGS	= -Wall -Wextra -Werror
-RM			= rm -rf
 
 SRCS		= ft_printf.c \
 					ftpr_utils.c \
@@ -54,7 +53,7 @@ clean:
 
 fclean: clean
 	make -C $(LIBFT_PATH) fclean
-	rm -rf $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
