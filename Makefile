@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/06/24 12:34:05 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/11 10:20:44 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,7 @@ SRCS		= ft_printf.c \
 					ftpr_convert_smpl_cdsi.c \
 					ftpr_convert_smpl_p.c \
 					ftpr_convert_smpl_x.c \
-					ftpr_convert_smpl.c \
-					ftpr_isconv.c
+					ftpr_convert_smpl.c
 
 OBJ_DIR		= obj
 OBJS			= $(SRCS:%.c=$(OBJ_DIR)/%.o)

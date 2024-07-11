@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/22 12:15:23 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/11 10:20:09 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 
 static const char	*g_convs_smpl[] = {"%c", "%s", "%p", "%d", "%i", "%u",
 	"%x", "%X", "%%", NULL};
+
+// check if substr at `s` is a simple conv or flagged conv
+// Return Values:
+// 		-1	no conv
+// 		0-...	simple conv index of conv in global
+//
+// ... the idea was to have return value -2 for complex conversions, for bonus.
+// this is why i have split the functions.
+int	ftpr_is_conversion(const char *s)
+{
+	int	i;
+
+	i = ftpr_is_smpl_conv(s);
+	if (i >= 0)
+		return (i);
+	return (-1);
+}
 
 int	ftpr_is_smpl_conv(const char *s)
 {
