@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:43:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/11 14:29:59 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/11 18:44:51 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	ft_printf(const char *fmt, ...)
 	va_end(args);
 	return (printed);
 }
+
+#ifndef BONUS
 
 int	ftpr_parse_args(va_list args, const char *fmt)
 {
@@ -52,7 +54,9 @@ int	ftpr_parse_args(va_list args, const char *fmt)
 	return (r);
 }
 
-// ::TESTS::
+#endif
+
+// ::TESTS MANDATORY::
 
 // #include <stdio.h>
 // #include <stdlib.h>
