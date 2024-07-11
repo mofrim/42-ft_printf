@@ -6,12 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 09:39:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/21 12:41:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/11 10:23:50 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "libft/libft.h"
+
+// some utitlity functions for ftpr
 
 void	ft_putchar(char c)
 {
