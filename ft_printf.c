@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:43:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/11 13:23:54 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/11 14:29:59 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	ftpr_parse_args(va_list args, const char *fmt)
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include <string.h>
-// #include <ctype.h>
 // #include <limits.h>
 // #include "../ft_printf.h"
 //
@@ -83,7 +82,7 @@ int	ftpr_parse_args(va_list args, const char *fmt)
 //
 // void test_ftpr()
 // {
-// 	printf(YLO "\n---- test_ftpr: ----\n\n" RST);
+// 	printf(YLO "\n---- test_ftpr ----\n\n" RST);
 // 	int rft = 0;
 // 	int rog = 0;
 //
@@ -216,6 +215,44 @@ int	ftpr_parse_args(va_list args, const char *fmt)
 // 	printf(YLO "\n--\n\n" RST);
 // 	if (rft != rog) {
 // 		printf(RED "#11 Error!\n" RST);
+// 		printf(RED "rft = %d\nshould be: %d\n\n" RST, rft, rog);
+// 		FAIL = 1;
+// 	}
+// 	// #12
+// 	printf(YLO "-- ftpr_test #12 --\n" RST);
+// 	printf(YLO "-- ft_printf:%s\n", RST);
+// 	rft = ft_printf("%u", INT_MIN + 1);
+// 	printf(YLO "\n-- printf:\n" RST);
+// 	rog = printf("%u", INT_MIN + 1);
+// 	printf(YLO "\n--\n\n" RST);
+// 	if (rft != rog) {
+// 		printf(RED "#12 Error!\n" RST);
+// 		printf(RED "rft = %d\nshould be: %d\n\n" RST, rft, rog);
+// 		FAIL = 1;
+// 	}
+// 	// #13
+// 	printf(YLO "-- ftpr_test #13 --\n" RST);
+// 	printf(YLO "-- ft_printf:%s\n", RST);
+// 	rft = ft_printf("%p", NULL);
+// 	printf(YLO "\n-- printf:\n" RST);
+// 	rog = printf("%p", NULL);
+// 	printf(YLO "\n--\n\n" RST);
+// 	if (rft != rog) {
+// 		printf(RED "#13 Error!\n" RST);
+// 		printf(RED "rft = %d\nshould be: %d\n\n" RST, rft, rog);
+// 		FAIL = 1;
+// 	}
+// 	// #14
+// 	char miep = 'j';
+// 	char *moep = miep;
+// 	printf(YLO "-- ftpr_test #14 --\n" RST);
+// 	printf(YLO "-- ft_printf:%s\n", RST);
+// 	rft = ft_printf("%p", moep);
+// 	printf(YLO "\n-- printf:\n" RST);
+// 	rog = printf("%p", moep);
+// 	printf(YLO "\n--\n\n" RST);
+// 	if (rft != rog) {
+// 		printf(RED "#14 Error!\n" RST);
 // 		printf(RED "rft = %d\nshould be: %d\n\n" RST, rft, rog);
 // 		FAIL = 1;
 // 	}
