@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/11 19:00:21 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/11 20:05:07 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ LIBFT				= $(LIBFT_PATH)/libft.a
 # another cool thing is also happening here: the $< inside the recipe is only
 # taking all the files from $(SRCS) which is the first prequisite. $(HDR) is
 # only a dependency. this is why noone is trying to compile ft_printf.h
-$(OBJ_DIR)/%.o: $(SRCS) $(HDR) | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.c $(HDR) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
@@ -57,21 +57,34 @@ $(OBJ_DIR):
 BONUS_SRCS	= $(SRCS) \
 							ftpr_convert_compl_bonus.c
 
+# the logic behind choosing different names for bonus-objs is, that it enables
+# us to completely seperate compilation of bonus and mandatory. the real
+# bonus-objs only get compiled into the library because we use $(BONUS_OBJS) as
+# prequisite in $(BONUS_NAME) rule. in $(NAME) rule $(OBJS) is used which
+# does not include any bonus files.
 BONUS_OBJS = $(BONUS_SRCS:%.c=$(OBJ_DIR)/bonus-%.o)
 BONUS_HDR = ft_printf_bonus.h
 BONUS_NAME = libftprintf_bonus.a
 
-$(OBJ_DIR)/bonus-%.o: $(BONUS_SRCS) $(HDR) $(BONUS_HDR) | $(OBJ_DIR)
+$(OBJ_DIR)/bonus-%.o: %.c $(HDR) $(BONUS_HDR) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -DBONUS -c $< -o $@
 
+# this and...
 $(BONUS_NAME): $(BONUS_OBJS)
 	make -C $(LIBFT_PATH) all
 	cp $(LIBFT) $(NAME)
 	ar -rcs $(BONUS_NAME) $(BONUS_OBJS)
 	cp $(BONUS_NAME) $(NAME)
 
+# ... this is the missing hack for making even `make bonus` never ever relink.
+# seperating the every file touching action from bonus-rule
+# \o/ \o/ \o/
 bonus: $(BONUS_NAME)
 ########################################## bonus end
+
+test: all
+	cc -o test_ftprintf tests/test_ftprintf.c libftprintf.a
+	./test_ftprintf
 
 clean:
 	make -C $(LIBFT_PATH) clean
@@ -83,4 +96,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
