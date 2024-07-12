@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/11 20:05:07 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/12 01:03:23 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,9 @@ $(OBJ_DIR):
 
 ########################################## bonus start
 BONUS_SRCS	= $(SRCS) \
-							ftpr_convert_compl_bonus.c
+							ftpr_convert_compl_bonus.c \
+							ftpr_is_compl_conv_bonus.c \
+							ftpr_flagging_bonus.c
 
 # the logic behind choosing different names for bonus-objs is, that it enables
 # us to completely seperate compilation of bonus and mandatory. the real
@@ -72,7 +74,7 @@ $(OBJ_DIR)/bonus-%.o: %.c $(HDR) $(BONUS_HDR) | $(OBJ_DIR)
 # this and...
 $(BONUS_NAME): $(BONUS_OBJS)
 	make -C $(LIBFT_PATH) all
-	cp $(LIBFT) $(NAME)
+	cp $(LIBFT) $(BONUS_NAME)
 	ar -rcs $(BONUS_NAME) $(BONUS_OBJS)
 	cp $(BONUS_NAME) $(NAME)
 
@@ -82,9 +84,13 @@ $(BONUS_NAME): $(BONUS_OBJS)
 bonus: $(BONUS_NAME)
 ########################################## bonus end
 
-test: all
+test: bonus
 	cc -o test_ftprintf tests/test_ftprintf.c libftprintf.a
 	./test_ftprintf
+
+testf: 
+	cc -o test_printf_flags tests/test_printf_flags.c
+	./test_printf_flags
 
 clean:
 	make -C $(LIBFT_PATH) clean

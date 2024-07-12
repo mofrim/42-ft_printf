@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:23:55 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/11 18:45:29 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/12 00:19:24 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,38 @@ int	ftpr_is_conversion(const char *s)
 	return (0);
 }
 
-// TODO: how to determine valid complex conv?
-int	ftpr_is_compl_conv(const char *s)
+// for first debugging: print detected compl_conv
+int	ftpr_convert_compl(va_list args, const char *fmt, int *r)
 {
-	(void) s;
-	return (0);
+	(void)r;
+	(void)args;
+	(void)fmt; 
+
+	return(0);
+}
+
+int	ftpr_parse_args(va_list args, const char *fmt)
+{
+	int	c;
+	int	r;
+
+	r = 0;
+	while (*fmt)
+	{
+		c = ftpr_is_conversion(fmt);
+		if (c == 1)
+		{
+			ftpr_convert_smpl(args, fmt, &r);
+			fmt += 2;
+		}
+		if (c == -1)
+			fmt += ftpr_convert_compl(args, fmt, &r);
+		else
+		{
+			ft_putchar_fd(*fmt, 1);
+			r++;
+			fmt++;
+		}
+	}
+	return (r);
 }
