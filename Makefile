@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/12 01:03:23 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/12 10:52:30 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,12 @@ CC			= cc
 CFLAGS	= -Wall -Wextra -Werror
 
 SRCS		= ft_printf.c \
-					ftpr_utils.c \
-					ftpr_utoa.c \
-					ftpr_convert_smpl_cdsi.c \
-					ftpr_convert_smpl_p.c \
-					ftpr_convert_smpl_x.c \
-					ftpr_convert_smpl.c
+					ftpr_smpl_utils.c \
+					ftpr_smpl_utoa.c \
+					ftpr_smpl_convert_cdsi.c \
+					ftpr_smpl_convert_p.c \
+					ftpr_smpl_convert_x.c \
+					ftpr_smpl_convert.c
 
 HDR	= ft_printf.h
 
@@ -55,9 +55,9 @@ $(OBJ_DIR):
 
 ########################################## bonus start
 BONUS_SRCS	= $(SRCS) \
-							ftpr_convert_compl_bonus.c \
-							ftpr_is_compl_conv_bonus.c \
-							ftpr_flagging_bonus.c
+							ftpr_compl_convert_bonus.c \
+							ftpr_compl_is_conv_bonus.c \
+							ftpr_compl_flagging_bonus.c
 
 # the logic behind choosing different names for bonus-objs is, that it enables
 # us to completely seperate compilation of bonus and mandatory. the real

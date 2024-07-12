@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:45:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/12 09:06:36 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/12 10:36:46 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,3 +85,4 @@ int	is_valid_flagconv_char(char c)
 		return (1);
 	return (0);
 }
+ftpr_iscom
