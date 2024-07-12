@@ -6,12 +6,29 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:45:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/12 10:55:40 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/12 13:47:35 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include "libft/libft.h"
+//
+// check if substr at `s` is a simple conv or flagged conv
+// Return Values:
+// 		0	no conv
+// 		1	only simple conv needed
+// 		-1	complex conversion
+// 		-42	evaluation of conversion reached end of string like in "%+-00-"
+int	ftpr_is_conversion(const char *s)
+{
+	if (ftpr_is_smpl_conv(s))
+		return (1);
+	if (*s == '%' && ftpr_is_compl_conv(s) == 1)
+		return (-1);
+	if (*s == '%' && ftpr_is_compl_conv(s) == -1)
+		return (-42);
+	return (0);
+}
 
 // ::The Rules::
 //
@@ -60,28 +77,15 @@ int	ftpr_is_compl_conv(const char *s)
 		if (*s == '.')
 			dot = 1;
 	}
-	return (0);
+	return (-1);
 }
 
-// cspdiuxX%
-int	is_conv_char(char c)
+// for first debugging: print detected compl_conv
+int	ftpr_convert_compl(va_list args, const char *fmt, int *r)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || \
-c == 'u' || c == 'x' || c == 'X' || c == '%')
-		return (1);
-	return (0);
-}
+	(void)r;
+	(void)args;
+	(void)fmt; 
 
-int	is_flag_char(char c)
-{
-	if (c == ' ' || c == '+' || c == '-' || c == '#' || c == '0')
-		return (1);
-	return (0);
-}
-
-int	is_valid_flagconv_char(char c)
-{
-	if (is_flag_char(c) || is_conv_char(c) || ft_isdigit(c) || c == '.')
-		return (1);
-	return (0);
+	return(0);
 }
