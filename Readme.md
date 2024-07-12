@@ -98,7 +98,3 @@ so a algorithm for deciding if we have valid, usable flags would be:
 2) if next few digits are a valid unsigned int 
 
 ...
-
-# or maybe just give up and use this struct approach :(
-
-
