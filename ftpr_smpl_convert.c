@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_convert_smpl.c                                :+:      :+:    :+:   */
+/*   ftpr_smpl_convert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/11 17:25:06 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/12 11:14:00 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifdef BONUS
+# include "ft_printf_bonus.h"
+#else 
+# include "ft_printf.h"
+#endif /* ifndef BONUS */
 
 // take this if we are not doing the bonus part.
 #ifndef BONUS

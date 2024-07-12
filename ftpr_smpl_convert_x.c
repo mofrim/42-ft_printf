@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_convert_smpl_x.c                              :+:      :+:    :+:   */
+/*   ftpr_smpl_convert_x.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 11:03:27 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/22 11:20:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/12 11:21:45 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifdef BONUS
+# include "ft_printf_bonus.h"
+#else
+# include "ft_printf.h"
+#endif
 
 static int	ftpr_hex_digits_int(unsigned int n)
 {

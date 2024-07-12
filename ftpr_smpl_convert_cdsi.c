@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_convert_smpl_cdsi.c                           :+:      :+:    :+:   */
+/*   ftpr_smpl_convert_cdsi.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:18:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/22 11:50:50 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/12 11:21:48 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifdef BONUS
+# include "ft_printf_bonus.h"
+#else
+# include "ft_printf.h"
+#endif
 
 int	ftpr_converter_i(int i)
 {

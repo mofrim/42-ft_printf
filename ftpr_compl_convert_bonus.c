@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_convert_compl_bonus.c                         :+:      :+:    :+:   */
+/*   ftpr_compl_convert_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:23:55 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/12 00:19:24 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/12 11:29:12 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ftpr_parse_args(va_list args, const char *fmt)
 			ftpr_convert_smpl(args, fmt, &r);
 			fmt += 2;
 		}
-		if (c == -1)
+		else if (c == -1)
 			fmt += ftpr_convert_compl(args, fmt, &r);
 		else
 		{

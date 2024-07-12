@@ -6,12 +6,15 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:43:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/11 18:44:51 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/12 11:20:32 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#ifdef BONUS
+# include "ft_printf_bonus.h"
+#else
+# include "ft_printf.h"
+#endif
 
 int	ft_printf(const char *fmt, ...)
 {
