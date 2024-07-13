@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 13:13:02 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/14 00:14:20 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,12 @@ int	ftpr_smpl_is_conv(const char *s)
 	return (0);
 }
 
-void	ftpr_smpl_convert(va_list args, const char *s, int *r)
+// aaaah, this is a little bit dirty. i just let ftpr_smpl_convert return 2
+// because it convenient for shortening code in ftpr_parse_args.
+//
+// TODO: actually there could be some real error handling be happening
+// here. maybe...
+int	ftpr_smpl_convert(va_list args, const char *s, int *r)
 {
 	if (!ft_strncmp(s, "%c", 2))
 		*r += ftpr_converter_c(va_arg(args, int));
@@ -63,4 +68,5 @@ void	ftpr_smpl_convert(va_list args, const char *s, int *r)
 		*r += ftpr_converter_xupper(va_arg(args, int));
 	if (!ft_strncmp(s, "%%", 2))
 		*r += ftpr_converter_c('%');
+	return (2);
 }

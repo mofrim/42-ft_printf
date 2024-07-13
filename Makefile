@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/13 16:05:55 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/14 00:48:30 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ $(OBJ_DIR):
 BONUS_SRCS	= $(SRCS) \
 							ftpr_compl_parse_bonus.c \
 							ftpr_compl_check_fmt_bonus.c \
+							ftpr_compl_convert_bonus.c \
 							ftpr_compl_utils_bonus.c \
 							ftpr_compl_is_conv_bonus.c \
 							ftpr_compl_flagging_bonus.c
