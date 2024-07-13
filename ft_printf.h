@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:45:15 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 14:28:14 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 15:04:00 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,3 @@ int		ftpr_converter_p(unsigned long l);
 int		ftpr_converter_x(unsigned int i);
 int		ftpr_converter_xupper(unsigned int i);
 #endif
-
-

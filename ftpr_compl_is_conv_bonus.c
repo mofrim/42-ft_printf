@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:45:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 14:16:54 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 15:07:25 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int	ftpr_is_conversion(const char *s)
 //     	 number, or simply a dot
 // vi)	 after a '.' only a number and the conv_spec are allowed
 // vii)	 the '%' conversion can have any valid combination of flags (including
-//     	 width and prec) in between first % and final %. the final % can be 
+//     	 width and prec) in between first % and final %. the final % can be
 //     	 followed by valid conv_char, it still will be printed like %%.
 // viii) a '0' after a '.' is ingored but valid
 // ix)	 IF there is a invalid sequence at the end of fmtstring nothing will
-// 		 be printed, not even preceeding valid characters or conversions and -1 has to
-// 		 be returned! TODO: handle this (how?)!
-// 
+// 		 be printed, not even preceeding valid characters or conversions
+// 		 and -1 has to be returned! TODO: handle this (how?)!
+//
 // NOTE: INVALID sequences lead to parts of or the whole sequence being printed.
 // but there are lot of combinations where the ignored or doubled stuff is not
 // printed even though it has no effect.
@@ -67,12 +67,11 @@ int	ftpr_compl_is_conv(const char *s)
 
 	num = 0;
 	dot = 0;
-	while(*(++s))
+	while (*(++s))
 	{
 		if (!is_valid_flagconv_char(*s))
 			return (0);
-		// here is the problem... because 0 is a flag char
-		if (is_flag_char(*s) && *s != '0' && (num || dot) ) 
+		if (is_flag_char(*s) && *s != '0' && (num || dot))
 			return (0);
 		if (*s == '.' && dot)
 			return (0);
@@ -91,7 +90,6 @@ int	ftpr_compl_convert(va_list args, const char *fmt, int *r)
 {
 	(void)r;
 	(void)args;
-	(void)fmt; 
-
-	return(0);
+	(void)fmt;
+	return (0);
 }
