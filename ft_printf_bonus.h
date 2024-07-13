@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 13:07:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 13:08:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ int		ftpr_compl_is_conv(const char *s);
 int		ftpr_compl_convert(va_list args, const char *fmt, int *r);
 t_flags	*init_flags(void);
 
-int	is_flag_char(char c);
-int	is_conv_char(char c);
-int	is_valid_flagconv_char(char c);
-
+int		is_flag_char(char c);
+int		is_conv_char(char c);
+int		is_valid_flagconv_char(char c);
 
 // from smpl ft_printf.h
 void	ft_putchar(char c);

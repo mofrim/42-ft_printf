@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:45:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 13:07:36 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 13:10:40 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	ftpr_is_conversion(const char *s)
 // TODO: handle this!
 // maybe by a function, say, scan_for_incomplete_convs() that in advance checks
 // the formatstring for ftpr_is_compl_conv() returning -42
+// -> i think logically this function should reside in ftpr_compl_parse.c
 int	ftpr_compl_is_conv(const char *s)
 {
 	int	num;
