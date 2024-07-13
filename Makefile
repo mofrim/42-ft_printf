@@ -16,6 +16,7 @@ CC			= cc
 CFLAGS	= -Wall -Wextra -Werror
 
 SRCS		= ft_printf.c \
+					ftpr_both_check_fmt.c \
 					ftpr_smpl_utils.c \
 					ftpr_smpl_utoa.c \
 					ftpr_smpl_convert_cdsi.c \

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:45:15 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 13:13:06 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 14:28:14 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*ftpr_hextoa_prefix(unsigned long n);
 
 int		ft_printf(const char *f, ...);
 int		ftpr_parse_args(va_list args, const char *fmt);
+int		ftpr_check_fmt(const char *fmt);
 
 int		ftpr_is_conversion(const char *s);
 int		ftpr_smpl_is_conv(const char *s);

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:43:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 13:15:24 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 14:29:44 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_printf(const char *fmt, ...)
 	va_list	args;
 	int		printed;
 
-	if (!fmt)
+	if (!fmt || !ftpr_check_fmt(fmt))
 		return (-1);
 	if (!*fmt)
 		return (0);
