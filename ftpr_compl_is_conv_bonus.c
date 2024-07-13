@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:45:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 13:05:59 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 13:07:36 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 // 		-42	evaluation of conversion reached end of string like in "%+-00-"
 int	ftpr_is_conversion(const char *s)
 {
-	if (ftpr_is_smpl_conv(s))
+	if (ftpr_smpl_is_conv(s))
 		return (1);
 	if (*s == '%' && ftpr_compl_is_conv(s) == 1)
 		return (-1);
