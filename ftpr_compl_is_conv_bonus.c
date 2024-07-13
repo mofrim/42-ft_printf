@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:45:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 15:07:25 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 15:09:55 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,4 @@ int	ftpr_compl_is_conv(const char *s)
 			dot = 1;
 	}
 	return (-1);
-}
-
-// for first debugging: print detected compl_conv
-int	ftpr_compl_convert(va_list args, const char *fmt, int *r)
-{
-	(void)r;
-	(void)args;
-	(void)fmt;
-	return (0);
 }

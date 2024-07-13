@@ -57,6 +57,7 @@ $(OBJ_DIR):
 ########################################## bonus start
 BONUS_SRCS	= $(SRCS) \
 							ftpr_compl_parse_bonus.c \
+							ftpr_compl_check_fmt_bonus.c \
 							ftpr_compl_utils_bonus.c \
 							ftpr_compl_is_conv_bonus.c \
 							ftpr_compl_flagging_bonus.c
