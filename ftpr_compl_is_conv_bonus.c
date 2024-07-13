@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:45:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/12 13:47:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 12:53:17 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	ftpr_is_conversion(const char *s)
 {
 	if (ftpr_is_smpl_conv(s))
 		return (1);
-	if (*s == '%' && ftpr_is_compl_conv(s) == 1)
+	if (*s == '%' && ftpr_compl_is_conv(s) == 1)
 		return (-1);
-	if (*s == '%' && ftpr_is_compl_conv(s) == -1)
+	if (*s == '%' && ftpr_compl_is_conv(s) == -1)
 		return (-42);
 	return (0);
 }
@@ -43,6 +43,9 @@ int	ftpr_is_conversion(const char *s)
 //     	 width and prec) in between first % and final %. the final % can be 
 //     	 followed by valid conv_char, it still will be printed like %%.
 // viii) a '0' after a '.' is ingored but valid
+// ix)	 IF there is a invalid sequence at the end of fmtstring nothing will
+// 		 be printed, not even preceeding valid characters or conversions and -1 has to
+// 		 be returned! TODO: handle this (how?)!
 // 
 // NOTE: INVALID sequences lead to parts of or the whole sequence being printed.
 // but there are lot of combinations where the ignored or doubled stuff is not
@@ -52,9 +55,11 @@ int	ftpr_is_conversion(const char *s)
 // so the loop starts looking at the first char after the %
 //
 // if we reach end of string without having found any conv_char this is a printf
-// error and we shall return -1!
+// error and we shall return -1! without printing anything!!! see rule ix)
 // TODO: handle this!
-int	ftpr_is_compl_conv(const char *s)
+// maybe by a function, say, scan_for_incomplete_convs() that in advance checks
+// the formatstring for ftpr_is_compl_conv() returning -42
+int	ftpr_compl_is_conv(const char *s)
 {
 	int	num;
 	int	dot;

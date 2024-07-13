@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/12 11:06:02 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/13 12:56:27 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ $(OBJ_DIR):
 
 ########################################## bonus start
 BONUS_SRCS	= $(SRCS) \
-							ftpr_compl_convert_bonus.c \
+							ftpr_compl_parse_bonus.c \
 							ftpr_compl_is_conv_bonus.c \
 							ftpr_compl_flagging_bonus.c
 

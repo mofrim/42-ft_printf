@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/12 11:20:01 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 12:54:19 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_flags
 	int	space;
 }	t_flags;
 
-int		ftpr_is_compl_conv(const char *s);
+int		ftpr_compl_is_conv(const char *s);
 int		ftpr_convert_compl(va_list args, const char *fmt, int *r);
 t_flags	*init_flags(void);
 
