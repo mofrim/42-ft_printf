@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:45:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 13:10:40 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 14:16:54 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ftpr_compl_is_conv(const char *s)
 
 	num = 0;
 	dot = 0;
-	while(*s++)
+	while(*(++s))
 	{
 		if (!is_valid_flagconv_char(*s))
 			return (0);
