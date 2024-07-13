@@ -1,5 +1,9 @@
 # readme for ft_printf
 
+## TODOs
+
+- [ ] unify way of commenting funcs. in header, or in source file?
+
 ## a rule-set for printf conversions shall be defined!
 
 1) any '-' invalidates any '0' and any ' '
