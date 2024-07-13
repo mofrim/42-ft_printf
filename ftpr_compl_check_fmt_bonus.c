@@ -6,15 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 14:26:06 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 14:51:34 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 15:12:58 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef BONUS
-# include "ft_printf_bonus.h"
-#else
-# include "ft_printf.h"
-#endif
+#include "ft_printf_bonus.h"
 
 /**
  * checks for incomplete conversions
@@ -22,9 +18,6 @@
  * this is necessary in case of incomplete conversions present in fmt_string
  * nothing should be printed at all and -1 be be returned by ft_printf.
  */
-
-#ifdef BONUS
-
 int	ftpr_check_fmt(const char *fmt)
 {
 	while (*fmt)
@@ -38,22 +31,3 @@ int	ftpr_check_fmt(const char *fmt)
 	}
 	return (1);
 }
-
-#else
-
-// in mandatory / smpl case we do not know anything about any flags ;)
-//
-// so, the only possibility vor invalid conversions we can check here: do we
-// have a fmt string like "%" or "*****%", which is, the fmtstring is somehow
-// ending with a %.
-int	ftpr_check_fmt(const char *fmt)
-{
-	if (!ft_strlen(fmt))
-		return (1);
-	fmt += ft_strlen(fmt) - 1;
-	if (*fmt == '%')
-		return (0);
-	return (1);
-}
-
-#endif 

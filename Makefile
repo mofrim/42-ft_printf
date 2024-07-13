@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/13 14:59:40 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/13 16:05:55 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ CC			= cc
 CFLAGS	= -Wall -Wextra -Werror
 
 SRCS		= ft_printf.c \
-					ftpr_both_check_fmt.c \
 					ftpr_smpl_utils.c \
 					ftpr_smpl_utoa.c \
 					ftpr_smpl_convert_cdsi.c \

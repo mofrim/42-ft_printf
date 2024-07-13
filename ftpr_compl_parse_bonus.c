@@ -6,12 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:23:55 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 14:01:08 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/13 15:10:22 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
-
 
 int	ftpr_parse_args(va_list args, const char *fmt)
 {
