@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/13 13:04:09 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/13 14:59:40 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,12 +87,12 @@ bonus: $(BONUS_NAME)
 ########################################## bonus end
 
 ########################################## tests start
-tests: all
-	cc -o test_ftprintf_smpl tests/test_ftprintf_smpl.c libftprintf.a
+tests: all tests/test_ftprintf_smpl.c tests/test_ftpr_smpl-func.c
+	cc -o test_ftprintf_smpl tests/test_ftprintf_smpl.c tests/test_ftpr_smpl-func.c libftprintf.a
 	./test_ftprintf_smpl
 
-test: bonus
-	cc -o test_ftprintf tests/test_ftprintf.c libftprintf.a
+test: bonus tests/test_ftprintf.c tests/test_ftpr_smpl-func.c
+	cc -DBONUS -o test_ftprintf tests/test_ftprintf.c tests/test_ftpr_smpl-func.c libftprintf.a
 	./test_ftprintf
 
 testf: 
