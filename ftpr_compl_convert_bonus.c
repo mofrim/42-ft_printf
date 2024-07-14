@@ -6,21 +6,16 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:09:58 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/14 16:24:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/15 00:02:17 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "ft_printf_bonus.h"
-#include <stdio.h>
 
-int	ftpr_compl_do_conv(va_list args, char conv, t_flags *flags, int *output);
-int	ftpr_compl_converter_d(int d, t_flags *flags);
-
-// TODO: EVERYTHING!!! THE WHOLE LOGIC
-//
 // for now: return -1 when anything goes wrong from here on down.
 // return length of scanned conversion sequence including '%' and conv_char
+//
+// return conv_seq_len + 2 because of '%' and conv_char
 int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 {
 	t_flags	*flags;
@@ -32,10 +27,6 @@ int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 		return (-1);
 	while (!is_conv_char(*(++fmt)))
 	{
-		// TODO:
-		// - move all of this to seperate function
-		// - make up handling for width and prec
-		// - is there anything independent?
 		if (*fmt == '+')
 			flags->plus = 1;
 		if (*fmt == '-')
@@ -48,12 +39,26 @@ int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 		{
 			flags->dot = 1;
 			flags->zero = 0;
-			// TODO: get prec number!
-			// get_prec(fmt, flags) reads uint 
+			if (ft_isdigit(*(fmt + 1)))
+			{
+				flags->prec = ftpr_compl_atoi((fmt + 1));
+				conv_seq_len += ft_strlen(ft_itoa(flags->prec)) - 1;
+				fmt += ft_strlen(ft_itoa(flags->prec)) - 1;
+
+			}
 		}
 		if (ft_isdigit(*fmt) && *fmt != '0' && !flags->dot)
 		{
-			// TODO: get width number!
+			flags->width = ftpr_compl_atoi(fmt);
+			conv_seq_len += ft_strlen(ft_itoa(flags->width)) - 1;
+			fmt += ft_strlen(ft_itoa(flags->width)) - 1;
+		}
+		if (ft_isdigit(*fmt) && *fmt != '0' && flags->dot)
+		{
+			flags->prec = ftpr_compl_atoi(fmt);
+			conv_seq_len += ft_strlen(ft_itoa(flags->prec)) - 1;
+			fmt += ft_strlen(ft_itoa(flags->prec)) - 1;
+			break;
 		}
 		if (*fmt == '0' && !flags->width && !flags->dot && !flags->minus)
 				flags->zero = 1;
@@ -61,26 +66,11 @@ int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 		conv_seq_len++;
 	}
 	ftpr_compl_do_conv(args, *fmt, flags, output);
-	return (conv_seq_len + 2); // add 2 because of % and conv_char
+	return (conv_seq_len + 2);
 }
 
-int	ftpr_compl_do_conv(va_list args, char conv, t_flags *flags, int *output)
+static void	gather_flags(t_flags **flags, const char **fmt, int *conv_seq_len)
 {
-	if (conv == 'd')
-		*output += ftpr_compl_converter_d(va_arg(args, int), flags);
-	return (0);
-}
 
-int	ftpr_compl_converter_d(int d, t_flags *flags)
-{
-	int	c;
 
-	c = 0;
-	if (d >= 0 && flags->plus)
-	{
-		ft_putchar('+');
-		c = 1;
-	}
-	c += ftpr_converter_d(d);
-	return (c);
 }

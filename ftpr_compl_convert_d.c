@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_compl_check_fmt_bonus.c                       :+:      :+:    :+:   */
+/*   ftpr_compl_convert_d.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/13 14:26:06 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/14 16:50:12 by fmaurer          ###   ########.fr       */
+/*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
+/*   Updated: 2024/07/14 23:56:21 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-// checks for INVALID conversions
-//
-// this is necessary in case of incomplete conversions present in fmt_string
-// nothing should be printed at all and -1 be be returned by ft_printf.
-//
-int	ftpr_check_fmt(const char *fmt)
+int	ftpr_compl_converter_d(int d, t_flags *flags)
 {
-	while (*fmt)
+	int	c;
+
+	c = 0;
+	if (d >= 0 && flags->plus)
 	{
-		if (*fmt == '%')
-			if (ftpr_compl_is_conv(fmt) == -1)
-				return (0);
-		fmt++;
+		ft_putchar('+');
+		c = 1;
 	}
-	return (1);
+	c += ftpr_converter_d(d);
+	return (c);
 }

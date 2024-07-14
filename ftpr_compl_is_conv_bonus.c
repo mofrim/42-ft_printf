@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:45:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/14 16:32:43 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/14 17:12:10 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ftpr_is_conversion(const char *s)
 //
 // i)  	 a '%' can be followed by any mix of '+- 0#'
 // ii)   BUT after the first number != 0 OR a '.' there can only be
-// iii)	 more numbers (actually until UINT_MAX)
+// iii)	 more numbers (UP TO INT_MAX)
 // iv) 	 NO 2 DOTS! ONLY ONE DOT ALLOWED!!
 // v) 	 if the first thing was a number, there can be a dot followed by another
 //     	 number, or simply a dot
@@ -45,21 +45,21 @@ int	ftpr_is_conversion(const char *s)
 // viii) a '0' after a '.' is ingored but valid
 // ix)	 IF there is a invalid sequence at the end of fmtstring nothing will
 // 		 be printed, not even preceeding valid characters or conversions
-// 		 and -1 has to be returned! TODO: handle this (how?)!
+// 		 and -1 has to be returned!
+// x)	 there must not be any width or prec numbers bigger than INT_MAX in the
+// 		 conversion string. this would be an INVALID FMTSTRING!!!
 //
-// NOTE: INVALID sequences lead to parts of or the whole sequence being printed.
+// NOTE: WRONG sequences lead to parts of or the whole sequence being printed.
 // but there are lot of combinations where the ignored or doubled stuff is not
 // printed even though it has no effect.
 //
 // NOTE: *s is pointing to the first '%' in the conversion string of interest.
 // so the loop starts looking at the first char after the %
 //
-// if we reach end of string without having found any conv_char this is a printf
-// error and we shall return -1! without printing anything!!! see rule ix)
-// TODO: handle this!
-// maybe by a function, say, scan_for_incomplete_convs() that in advance checks
-// the formatstring for ftpr_is_compl_conv() returning -42
-// -> i think logically this function should reside in ftpr_compl_parse.c
+// Return Values:
+// 		1	VALID & CORRECT sequence
+// 		0	WRONG or INCOMPLETE but not invalid sequence
+// 	   -1	INVALID sequence -> no output at all, ft_printf returns -1
 int	ftpr_compl_is_conv(const char *s)
 {
 	int	num;
@@ -79,7 +79,7 @@ int	ftpr_compl_is_conv(const char *s)
 			return (1);
 		if (ft_isdigit(*s) && !num && *s != '0')
 			num = 1;
-		if (ft_isdigit(*s) && *s != '0' && ftpr_compl_atol(s) == -1)
+		if (ft_isdigit(*s) && *s != '0' && ftpr_compl_atoi(s) == -1)
 			return (-1);
 		if (*s == '.')
 			dot = 1;
