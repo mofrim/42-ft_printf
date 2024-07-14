@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:09:58 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/14 02:01:09 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/14 16:24:53 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ftpr_compl_converter_d(int d, t_flags *flags);
 // TODO: EVERYTHING!!! THE WHOLE LOGIC
 //
 // for now: return -1 when anything goes wrong from here on down.
+// return length of scanned conversion sequence including '%' and conv_char
 int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 {
 	t_flags	*flags;
@@ -38,9 +39,25 @@ int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 		if (*fmt == '+')
 			flags->plus = 1;
 		if (*fmt == '-')
+		{
 			flags->minus = 1;
-		if (*fmt == '0' && !flags->width && !flags->dot)
-			flags->zero = 1;
+			if (flags->zero)
+				flags->zero = 0;
+		}
+		if (*fmt == '.')
+		{
+			flags->dot = 1;
+			flags->zero = 0;
+			// TODO: get prec number!
+			// get_prec(fmt, flags) reads uint 
+		}
+		if (ft_isdigit(*fmt) && *fmt != '0' && !flags->dot)
+		{
+			// TODO: get width number!
+		}
+		if (*fmt == '0' && !flags->width && !flags->dot && !flags->minus)
+				flags->zero = 1;
+
 		conv_seq_len++;
 	}
 	ftpr_compl_do_conv(args, *fmt, flags, output);

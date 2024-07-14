@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/14 00:39:11 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/14 16:31:25 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_flags	*init_flags(void);
 int		is_flag_char(char c);
 int		is_conv_char(char c);
 int		is_valid_flagconv_char(char c);
+long	ftpr_compl_atol(const char *s);
 
 int		ftpr_check_fmt(const char *fmt);
 
