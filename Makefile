@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/14 12:31:07 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/15 00:34:11 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,9 @@ BONUS_SRCS_IN	= ./ftpr_compl_parse_bonus.c \
 								./ftpr_compl_convert_bonus.c \
 								./ftpr_compl_utils_bonus.c \
 								./ftpr_compl_is_conv_bonus.c \
-								./ftpr_compl_flagging_bonus.c
+								./ftpr_compl_flagging_bonus.c \
+								./ftpr_compl_convert_d.c \
+								./ftpr_compl_do_conv.c
 
 # oh! again that stupid little hack.
 BONUS_SRCS = $(patsubst ./%,%,$(BONUS_SRCS_IN)) $(SRCS)

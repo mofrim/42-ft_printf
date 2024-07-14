@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/14 23:51:44 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/15 00:30:02 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@ typedef struct s_flags
 
 int		ftpr_compl_is_conv(const char *s);
 int		ftpr_compl_convert(va_list args, const char *fmt, int *r);
+
 t_flags	*init_flags(void);
+void	ftpr_print_flags(t_flags *fl);
 
 int	ftpr_compl_do_conv(va_list args, char conv, t_flags *flags, int *output);
+int	ftpr_compl_converter_d(int d, t_flags *flags);
 
 int		is_flag_char(char c);
 int		is_conv_char(char c);

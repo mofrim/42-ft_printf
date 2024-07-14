@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:17:08 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/14 00:49:20 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/15 00:37:15 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,18 @@ t_flags	*init_flags(void)
 	flags->zero = 0;
 	flags->space = 0;
 	return (flags);
+}
+
+void	ftpr_print_flags(t_flags *fl)
+{
+	ft_printf("\n\n::: flagcheck :::\n");
+	ft_printf("fl->plus = %d\n", fl->plus);
+	ft_printf("fl->minus = %d\n", fl->minus);
+	ft_printf("fl->hash = %d\n", fl->hash);
+	ft_printf("fl->width = %d\n", fl->width);
+	ft_printf("fl->dot = %d\n", fl->dot);
+	ft_printf("fl->prec = %d\n", fl->prec);
+	ft_printf("fl->zero = %d\n", fl->zero);
+	ft_printf("fl->space = %d\n", fl->space);
+	ft_printf("::: flagcheck end :::\n");
 }
