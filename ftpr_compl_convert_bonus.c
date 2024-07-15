@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:09:58 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/15 01:11:15 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/15 02:06:09 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 			flags->zero = 1;
 		conv_seq_len++;
 	}
+	// ft_printf("conv_char = %c\n", *fmt);
+	// ft_printf("conv_seq_len = %d\n", conv_seq_len);
+	// ftpr_print_flags(flags);
 	ftpr_compl_do_conv(args, *fmt, flags, output);
-	ftpr_print_flags(flags);
-	ft_printf("conv_seq_len = %d\n", conv_seq_len);
 	free(flags);
-	return (conv_seq_len);
+	return (conv_seq_len + 1);
 }
 
 static void	get_pmshash(t_flags **fl, const char **fmt)
@@ -73,6 +74,8 @@ static void	get_pmshash(t_flags **fl, const char **fmt)
 
 static void	get_prec_width(t_flags **fl, const char **fmt, int *conv_seq_len)
 {
+	char	*tmp;
+
 	if (**fmt == '.')
 	{
 		(*fl)->dot = 1;
@@ -80,14 +83,18 @@ static void	get_prec_width(t_flags **fl, const char **fmt, int *conv_seq_len)
 		if (ft_isdigit(*(*fmt + 1)))
 		{
 			(*fl)->prec = ftpr_compl_atoi((*fmt + 1));
-			*conv_seq_len += ft_strlen(ft_itoa((*fl)->prec));
-			fmt += ft_strlen(ft_itoa((*fl)->prec));
+			tmp = ft_itoa((*fl)->prec);
+			*conv_seq_len += ft_strlen(tmp);
+			fmt += ft_strlen(tmp);
+			free(tmp);
 		}
 	}
 	if (ft_isdigit(**fmt) && **fmt != '0' && !(*fl)->dot)
 	{
 		(*fl)->width = ftpr_compl_atoi(*fmt);
-		*conv_seq_len += ft_strlen(ft_itoa((*fl)->width)) - 1;
-		(*fmt) += ft_strlen(ft_itoa((*fl)->width)) - 1;
+		tmp = ft_itoa((*fl)->width);
+		*conv_seq_len += ft_strlen(tmp) - 1;
+		(*fmt) += ft_strlen(tmp) - 1;
+		free(tmp);
 	}
 }
