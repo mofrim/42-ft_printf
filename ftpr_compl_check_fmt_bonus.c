@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 14:26:06 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/14 16:50:12 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/15 19:10:59 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ int	ftpr_check_fmt(const char *fmt)
 	while (*fmt)
 	{
 		if (*fmt == '%')
+		{
 			if (ftpr_compl_is_conv(fmt) == -1)
 				return (0);
+			while (!is_conv_char(*(++fmt)))
+				;
+		}
 		fmt++;
 	}
 	return (1);
