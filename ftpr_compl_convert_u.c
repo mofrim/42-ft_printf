@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/15 18:36:17 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/15 18:45:36 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ftpr_compl_converter_u(unsigned int d, t_flags *fl)
 	int	r;
 
 	r = 0;
-	if (!fl->minus && !fl->dot && (fl->zero || fl->plus || fl->space || fl->width))
+	if (!fl->minus && !fl->dot && (fl->zero || fl->space || fl->width))
 		r = print_zero_left_padded(d, fl);
 	else if (fl->minus && !fl->dot)
 		r = print_right_padded(d, fl);
@@ -46,18 +46,17 @@ static int	print_zero_left_padded(unsigned int d, t_flags *fl)
 	num = ftpr_utoa(d);
 	len = ft_strlen(num);
 	i = -1;
-	if (fl->plus || fl->space)
-		i++;
+	i += fl->space;
 	if (fl->width && fl->width > len)
 		while (++i < fl->width - len)
 			ft_putchar(fl->zero * '0' + !fl->zero * ' ');
-	if (fl->plus || fl->space)
+	if (fl->space)
 		ft_putchar(fl->plus * '+' + fl->space * ' ');
 	ft_putstr(num);
 	free(num);
 	if (fl->width >= len)
 		return (fl->width);
-	return (len + (fl->plus || fl->space));
+	return (len + fl->space);
 }
 
 static int	print_right_padded(unsigned int d, t_flags *fl)
@@ -69,9 +68,9 @@ static int	print_right_padded(unsigned int d, t_flags *fl)
 	num = ftpr_utoa(d);
 	len = ft_strlen(num);
 	i = -1;
-	if (fl->plus || fl->space)
+	if (fl->space)
 	{
-		ft_putchar(fl->plus * '+' + fl->space * ' ');
+		ft_putchar(' ');
 		i++;
 	}
 	ft_putstr(num);
@@ -93,16 +92,16 @@ static int	print_prec(unsigned int d, t_flags *fl)
 	num = ftpr_utoa(d);
 	len = ft_strlen(num);
 	i = -1;
-	if (fl->plus || fl->space)
-		ft_putchar(fl->plus * '+' + fl->space * ' ');
+	if (fl->space)
+		ft_putchar(' ');
 	if (fl->prec > len)
 		while (++i < fl->prec - len)
 			ft_putchar('0');
 	ft_putstr(num);
 	free(num);
 	if (fl->prec >= len)
-		return (fl->prec + (fl->plus || fl->space) );
-	return (len + (fl->plus || fl->space));
+		return (fl->prec + fl->space);
+	return (len + fl->space);
 }
 
 static int	print_prec_width(unsigned int d, t_flags *fl)
@@ -111,8 +110,7 @@ static int	print_prec_width(unsigned int d, t_flags *fl)
 	int		r;
 
 	i = -1;
-	if (fl->plus || fl->space)
-		fl->width--;
+	fl->width -= fl->space;
 	if (!fl->minus)
 	{
 		while (++i < fl->width - fl->prec)

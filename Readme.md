@@ -8,19 +8,19 @@
 
 ### 'd' and 'i'
 
-- [x] '-'
-- [x] '+'
-- [x] '0'
-- [x] ' '
-- [x] '.'
+- [x] minus
+- [x] plus
+- [x] zero
+- [x] space
+- [x] dot
 
 ### u
 
-- [x] '-'
-- [ ] '+'
-- [ ] '0'
-- [ ] ' '
-- [ ] '.'
+- [x] minus
+- [x] plus
+- [x] zero
+- [x] space
+- [x] dot
 
 
 
@@ -76,48 +76,9 @@
 
 **Question** what is the meaning of '.' when there is no float conversion?
 
-## another approach for parsing conversions
-
 from manpage:
     the overall syntax for conversion specification is:
     %[$][flags][width][.precision][length modifier]conversion
-
-so maybe, straight from the beginning i should use a variadic function for
-parsing conversions, something like
-parse_conversions()...
-
-ah!! no. The idea was different. I use a chain of functions for parsing.
-
-1) `is_conversion()` checks for % and maybe just handles %% by printing %, else
-it gives control to
-2) `detect_conversion()`: detect wether we have a
-2) `simple_conversion()`: which handles all simple stuff like %c and %d
-3) `flag_conversion()`: which could also handle %010d or %.3lf
-
-`flag_conversion` should detect specs to be handled. f.ex. the most complex
-case: %+010d -> analyses this string like
-
-char *p = "%+010d";
-
-if (*p == '+') {
-    flags++;
-    flagspresent.plus = 1;
-}
-if (*p == '0') {
-    flags++;
-    flagspresent.zero = 1;
-}
-
-how to use this to call a variadic function?
-something like:
-
-if (flag1 && flag2)
-    print_conversion(2, flag1, flag2);
-
-if (flag1)
-    print_conversion(1, flag1);
-
-this means: `print_conversion(int n, ...)`
 
 ## conversion notes:
 
