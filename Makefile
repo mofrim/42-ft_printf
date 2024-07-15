@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/15 00:34:11 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/15 16:36:22 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,17 +15,17 @@ NAME	=	libftprintf.a
 CC			= cc
 CFLAGS	= -Wall -Wextra -Werror
 
-SRCS_IN		= ./ft_printf.c \
-					./ftpr_smpl_utils.c \
-					./ftpr_smpl_utoa.c \
-					./ftpr_smpl_convert_cdsi.c \
-					./ftpr_smpl_convert_p.c \
-					./ftpr_smpl_convert_x.c \
-					./ftpr_smpl_convert.c
+SRCS_IN		= ft_printf.c \
+						ftpr_smpl_utils.c \
+						ftpr_smpl_utoa.c \
+						ftpr_smpl_convert_cdsi.c \
+						ftpr_smpl_convert_p.c \
+						ftpr_smpl_convert_x.c \
+						ftpr_smpl_convert.c
 
 # stupid little hack, but good for learning some more make voodoo ;)
 # removes leading './' again
-SRCS = $(patsubst ./%,%,$(SRCS_IN))
+# SRCS = $(patsubst ./%,%,$(SRCS_IN))
 
 HDR	= ft_printf.h
 
@@ -58,17 +58,18 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 ########################################## bonus start
-BONUS_SRCS_IN	= ./ftpr_compl_parse_bonus.c \
-								./ftpr_compl_check_fmt_bonus.c \
-								./ftpr_compl_convert_bonus.c \
-								./ftpr_compl_utils_bonus.c \
-								./ftpr_compl_is_conv_bonus.c \
-								./ftpr_compl_flagging_bonus.c \
-								./ftpr_compl_convert_d.c \
-								./ftpr_compl_do_conv.c
+BONUS_SRCS_IN	= ftpr_compl_parse_bonus.c \
+								ftpr_compl_check_fmt_bonus.c \
+								ftpr_compl_convert_bonus.c \
+								ftpr_compl_utils_bonus.c \
+								ftpr_compl_is_conv_bonus.c \
+								ftpr_compl_flagging_bonus.c \
+								ftpr_compl_do_conv.c \
+								ftpr_compl_convert_d.c \
+								ftpr_compl_convert_u.c
 
 # oh! again that stupid little hack.
-BONUS_SRCS = $(patsubst ./%,%,$(BONUS_SRCS_IN)) $(SRCS)
+# BONUS_SRCS = $(patsubst ./%,%,$(BONUS_SRCS_IN)) $(SRCS)
 
 # the logic behind choosing different names for bonus-objs is, that it enables
 # us to completely seperate compilation of bonus and mandatory. the real
