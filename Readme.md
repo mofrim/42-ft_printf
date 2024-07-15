@@ -19,6 +19,16 @@
 6) the '#' rules:
     - only is supposed to work with 'x', 'X'
 
+## fine grained rules for every flag
+
+### zero rules
+
+- [X] '-' present => ignore '0'
+- [ ] ' ' and '0' shall work together
+- [ ] '+' and '0' shall work together, but '+' overrides space anyway
+- [ ] '.' superceedes '0'
+
+
 ## conversions & flags i have to deal with
 
 - conversions:
