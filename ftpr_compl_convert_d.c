@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/15 10:24:09 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/15 14:16:10 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	print_zero_left_padded(int d, t_flags *fl)
 		i++;
 	}
 	if (fl->zero && fl->width && fl->width > len)
-		while(++i < fl->width - len)
+		while (++i < fl->width - len)
 			ft_putchar('0');
 	if (d < 0)
 		ft_putstr(num + 1);
@@ -67,18 +67,17 @@ static int	print_right_padded(int d, t_flags *fl)
 	num = ft_itoa(d);
 	len = ft_strlen(num);
 	i = -1;
-	if (d >= 0 && fl->space)
-		ft_putchar(' ');
-	if (fl->zero && fl->width && fl->width > len)
-		while(++i < fl->width - len)
-			ft_putchar('0');
-	if (d < 0)
-		ft_putstr(num + 1);
-	else
-		ft_putstr(num);
+	if (d >= 0 && (fl->plus || fl->space))
+	{
+		ft_putchar(fl->plus * '+' + fl->space * ' ');
+		i++;
+	}
+	ft_putstr(num);
+	if (fl->width && fl->width > len)
+		while (++i < fl->width - len)
+			ft_putchar(' ');
 	free(num);
 	if (fl->width >= len)
 		return (fl->width);
 	return (len);
-
 }
