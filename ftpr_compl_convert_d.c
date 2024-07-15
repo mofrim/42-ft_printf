@@ -6,14 +6,16 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/15 01:54:16 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/15 10:24:09 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include "libft/libft.h"
 
-static int	print_left_padded(int d, t_flags *fl);
+static int	print_zero_left_padded(int d, t_flags *fl);
+
+static int	print_right_padded(int d, t_flags *fl);
 
 int	ftpr_compl_converter_d(int d, t_flags *fl)
 {
@@ -21,11 +23,13 @@ int	ftpr_compl_converter_d(int d, t_flags *fl)
 
 	r = 0;
 	if (!fl->minus)
-		r = print_left_padded(d, fl);
+		r = print_zero_left_padded(d, fl);
+	if (fl->minus)
+		r = print_right_padded(d, fl);
 	return (r);
 }
 
-static int	print_left_padded(int d, t_flags *fl)
+static int	print_zero_left_padded(int d, t_flags *fl)
 {
 	char	*num;
 	int		i;
@@ -34,27 +38,47 @@ static int	print_left_padded(int d, t_flags *fl)
 	num = ft_itoa(d);
 	len = ft_strlen(num);
 	i = -1;
+	if (d < 0)
+		ft_putchar('-');
+	if (d >= 0 && (fl->plus || fl->space))
+	{
+		ft_putchar(fl->plus * '+' + fl->space * ' ');
+		i++;
+	}
 	if (fl->zero && fl->width && fl->width > len)
 		while(++i < fl->width - len)
 			ft_putchar('0');
-	ft_putstr(num);
+	if (d < 0)
+		ft_putstr(num + 1);
+	else
+		ft_putstr(num);
 	free(num);
 	if (fl->width >= len)
 		return (fl->width);
 	return (len);
 }
 
-// int	ftpr_compl_converter_d(int d, t_flags *flags)
-// {
-//
-// 	int	c;
-//
-// 	c = 0;
-// 	if (d >= 0 && flags->plus)
-// 	{
-// 		ft_putchar('+');
-// 		c = 1;
-// 	}
-// 	c += ftpr_converter_d(d);
-// 	return (c);
-// }
+static int	print_right_padded(int d, t_flags *fl)
+{
+	char	*num;
+	int		i;
+	int		len;
+
+	num = ft_itoa(d);
+	len = ft_strlen(num);
+	i = -1;
+	if (d >= 0 && fl->space)
+		ft_putchar(' ');
+	if (fl->zero && fl->width && fl->width > len)
+		while(++i < fl->width - len)
+			ft_putchar('0');
+	if (d < 0)
+		ft_putstr(num + 1);
+	else
+		ft_putstr(num);
+	free(num);
+	if (fl->width >= len)
+		return (fl->width);
+	return (len);
+
+}
