@@ -4,6 +4,26 @@
 
 - [ ] unify way of commenting funcs. in header, or in source file?
 
+## Progress
+
+### 'd' and 'i'
+
+- [x] '-'
+- [x] '+'
+- [x] '0'
+- [x] ' '
+- [x] '.'
+
+### u
+
+- [x] '-'
+- [ ] '+'
+- [ ] '0'
+- [ ] ' '
+- [ ] '.'
+
+
+
 ## a rule-set for printf conversions shall be defined!
 
 1) any '-' invalidates any '0' and any ' '
@@ -23,10 +43,18 @@
 
 ### zero rules
 
-- [X] '-' present => ignore '0'
-- [ ] ' ' and '0' shall work together
-- [ ] '+' and '0' shall work together, but '+' overrides space anyway
-- [ ] '.' superceedes '0'
+- [x] '-' present => ignore '0'
+- [x] ' ' and '0' shall work together
+- [x] '+' and '0' shall work together, but '+' overrides space anyway
+- [x] '.' superceedes '0'
+
+### prec rules
+
+- [x] '-' is ignored
+- [x] ' ' and '+' are respected
+- [x] if width <= prec number is zero padded. if width > prec number including
+      sign is ' ' padded until prec or sign
+- [x] if '-' is given the width-padding happens to the right of the number
 
 
 ## conversions & flags i have to deal with
