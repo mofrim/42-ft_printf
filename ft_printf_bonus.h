@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/15 01:28:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/15 16:30:33 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		ftpr_compl_do_conv(va_list args, char conv, t_flags *flags, \
 int *output);
 
 int		ftpr_compl_converter_d(int d, t_flags *flags);
+int		ftpr_compl_converter_u(unsigned int d, t_flags *flags);
 
 t_flags	*init_flags(void);
 void	ftpr_print_flags(t_flags *fl);
