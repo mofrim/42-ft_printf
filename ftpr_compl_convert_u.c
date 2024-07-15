@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/15 18:33:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/15 18:36:17 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,54 +37,27 @@ int	ftpr_compl_converter_u(unsigned int d, t_flags *fl)
 	return (r);
 }
 
-// static int	print_zero_left_padded(unsigned int d, t_flags *fl)
-// {
-// 	char	*num;
-// 	int		i;
-// 	int		len;
-//
-// 	num = ftpr_utoa(d);
-// 	len = ft_strlen(num);
-// 	i = -1;
-// 	if (fl->plus || fl->space)
-// 		i++;
-// 	if (fl->width && fl->width > len)
-// 		while (++i < fl->width - len)
-// 			ft_putchar(fl->zero * '0' + !fl->zero * ' ');
-// 	ft_putchar(fl->plus * '+' + fl->space * ' ');
-// 	ft_putstr(num);
-// 	free(num);
-// 	if (fl->width >= len)
-// 		return (fl->width);
-// 	return (len + (fl->plus || fl->space));
-// }
-//
 static int	print_zero_left_padded(unsigned int d, t_flags *fl)
 {
 	char	*num;
 	int		i;
 	int		len;
 
-	num = ft_itoa(d);
+	num = ftpr_utoa(d);
 	len = ft_strlen(num);
 	i = -1;
-	if (d < 0)
-		ft_putchar('-');
-	if (d >= 0 && (fl->plus || fl->space))
+	if (fl->plus || fl->space)
 		i++;
 	if (fl->width && fl->width > len)
 		while (++i < fl->width - len)
 			ft_putchar(fl->zero * '0' + !fl->zero * ' ');
-	if (d >= 0 && (fl->plus || fl->space))
+	if (fl->plus || fl->space)
 		ft_putchar(fl->plus * '+' + fl->space * ' ');
-	if (d < 0)
-		ft_putstr(num + 1);
-	else
-		ft_putstr(num);
+	ft_putstr(num);
 	free(num);
 	if (fl->width >= len)
 		return (fl->width);
-	return (len + ((fl->plus || fl->space) && (d >= 0)));
+	return (len + (fl->plus || fl->space));
 }
 
 static int	print_right_padded(unsigned int d, t_flags *fl)
