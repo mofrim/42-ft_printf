@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/15 16:34:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/15 16:42:21 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	print_zero_left_padded(unsigned int d, t_flags *fl)
 	int		i;
 	int		len;
 
-	num = ft_itoa(d);
+	num = ftpr_utoa(d);
 	len = ft_strlen(num);
 	i = -1;
 	if (fl->plus || fl->space)
@@ -65,7 +65,7 @@ static int	print_right_padded(unsigned int d, t_flags *fl)
 	int		i;
 	int		len;
 
-	num = ft_itoa(d);
+	num = ftpr_utoa(d);
 	len = ft_strlen(num);
 	i = -1;
 	if (fl->plus || fl->space)
@@ -89,7 +89,7 @@ static int	print_prec(unsigned int d, t_flags *fl)
 	int		i;
 	int		len;
 
-	num = ft_itoa(d);
+	num = ftpr_utoa(d);
 	len = ft_strlen(num);
 	i = -1;
 	if (fl->plus || fl->space)
