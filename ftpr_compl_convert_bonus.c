@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:09:58 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/15 02:06:09 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/15 10:40:15 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 			flags->zero = 1;
 		conv_seq_len++;
 	}
+	// DEBUG:
+	//
 	// ft_printf("conv_char = %c\n", *fmt);
 	// ft_printf("conv_seq_len = %d\n", conv_seq_len);
 	// ftpr_print_flags(flags);
@@ -85,7 +87,7 @@ static void	get_prec_width(t_flags **fl, const char **fmt, int *conv_seq_len)
 			(*fl)->prec = ftpr_compl_atoi((*fmt + 1));
 			tmp = ft_itoa((*fl)->prec);
 			*conv_seq_len += ft_strlen(tmp);
-			fmt += ft_strlen(tmp);
+			(*fmt) += ft_strlen(tmp);
 			free(tmp);
 		}
 	}
