@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/16 20:37:42 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/16 20:39:55 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,6 @@ $(OBJ_DIR)/bonus-%.o: %.c $(HDR) $(BONUS_HDR) | $(OBJ_DIR)
 	mv $(BONUS_NAME) $(NAME)
 
 # ... this is the missing hack for making even `make bonus` never ever relink.
-# seperating the every file touching action from bonus-rule
 # \o/ \o/ \o/
 bonus: .bonus
 ########################################## bonus end
