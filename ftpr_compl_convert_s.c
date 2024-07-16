@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/16 21:59:30 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/16 22:04:20 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ int	ftpr_compl_converter_s(char *s, t_flags *fl)
 		r = print_right_padded(s, fl);
 	else if (fl->dot)
 		r = print_prec_width(s, fl);
+	else 
+	{
+		ft_putstr(s);
+		r = ft_strlen(s);
+	}
 	return (r);
 }
 
