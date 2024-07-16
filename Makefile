@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/16 07:43:22 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/16 20:08:50 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,10 +46,14 @@ $(OBJ_DIR)/%.o: %.c $(HDR) | $(OBJ_DIR)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+.mandatory: $(OBJS)
+	rm -f .bonus
+	touch .mandatory
 	make -C $(LIBFT_PATH) all
 	cp $(LIBFT) $(NAME)
 	ar -rcs $(NAME) $(OBJS)
+
+$(NAME): .mandatory
 
 $(LIBFT):
 	make -C $(LIBFT_PATH) all
@@ -84,18 +88,18 @@ BONUS_NAME = libftprintf_bonus.a
 $(OBJ_DIR)/bonus-%.o: %.c $(HDR) $(BONUS_HDR) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -DBONUS -c $< -o $@
 
-# this and...
-$(BONUS_NAME): $(BONUS_OBJS)
+.bonus: $(BONUS_OBJS)
+	rm -f .mandatory
+	touch .bonus
 	make -C $(LIBFT_PATH) all
 	cp $(LIBFT) $(BONUS_NAME)
 	ar -rcs $(BONUS_NAME) $(BONUS_OBJS)
-	cp $(BONUS_NAME) $(NAME)
-	rm $(BONUS_NAME)
+	mv $(BONUS_NAME) $(NAME)
 
 # ... this is the missing hack for making even `make bonus` never ever relink.
 # seperating the every file touching action from bonus-rule
 # \o/ \o/ \o/
-bonus: $(BONUS_NAME) $(NAME)
+bonus: .bonus
 ########################################## bonus end
 
 ########################################## tests start
@@ -122,7 +126,7 @@ clean:
 # NOTE: remove testclean before final submission
 fclean: clean testclean
 	make -C $(LIBFT_PATH) fclean
-	rm -f $(NAME) $(BONUS_NAME)
+	rm -f $(NAME) $(BONUS_NAME) .mandatory .bonus
 
 re: fclean all
 
