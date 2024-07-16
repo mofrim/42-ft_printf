@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:50:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/16 20:33:16 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/16 21:22:48 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	ftpr_compl_do_conv(va_list args, char conv, t_flags *flags, int *output)
 		*output += ftpr_compl_converter_u(va_arg(args, unsigned int), flags);
 	else if (conv == 'c')
 		*output += ftpr_compl_converter_c(va_arg(args, int), flags);
+	else if (conv == 's')
+		*output += ftpr_compl_converter_s(va_arg(args, char *), flags);
 	return (0);
 }
 
