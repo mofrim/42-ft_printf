@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/16 00:52:02 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/16 07:43:22 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,7 @@ $(BONUS_NAME): $(BONUS_OBJS)
 	cp $(LIBFT) $(BONUS_NAME)
 	ar -rcs $(BONUS_NAME) $(BONUS_OBJS)
 	cp $(BONUS_NAME) $(NAME)
-	# rm $(BONUS_NAME)
+	rm $(BONUS_NAME)
 
 # ... this is the missing hack for making even `make bonus` never ever relink.
 # seperating the every file touching action from bonus-rule
