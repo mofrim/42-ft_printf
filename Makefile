@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/16 20:11:26 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/16 20:37:42 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS_IN	= ./ft_printf.c \
 
 # stupid little hack, but good for learning some more make voodoo ;)
 # removes leading './' again
- SRCS = $(patsubst ./%,%,$(SRCS_IN))
+SRCS = $(patsubst ./%,%,$(SRCS_IN))
 
 HDR	= ft_printf.h
 
@@ -70,7 +70,8 @@ BONUS_SRCS_IN = ./ftpr_compl_parse_bonus.c \
 								./ftpr_compl_flagging_bonus.c \
 								./ftpr_compl_do_conv.c \
 								./ftpr_compl_convert_d.c \
-								./ftpr_compl_convert_u.c
+								./ftpr_compl_convert_u.c \
+								./ftpr_compl_convert_c.c
 
 # oh! again that stupid little hack.
 BONUS_SRCS = $(patsubst ./%,%,$(BONUS_SRCS_IN)) $(SRCS)
@@ -129,4 +130,4 @@ fclean: clean testclean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus testclean
