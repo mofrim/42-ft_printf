@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/16 22:04:20 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/17 22:33:24 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,8 @@ int	ftpr_compl_converter_s(char *s, t_flags *fl)
 		r = print_right_padded(s, fl);
 	else if (fl->dot)
 		r = print_prec_width(s, fl);
-	else 
-	{
-		ft_putstr(s);
-		r = ft_strlen(s);
-	}
+	else
+		return (ftpr_converter_s(s));
 	return (r);
 }
 
@@ -45,12 +42,15 @@ static int	print_left_padded(char *s, t_flags *fl)
 	int		i;
 	int		len;
 
-	len = ft_strlen(s);
+	if (!s)
+		len = 6;
+	else
+		len = ft_strlen(s);
 	i = -1;
 	if (fl->width > len)
 		while (++i < fl->width - len)
 			ft_putchar(' ');
-	ft_putstr(s);
+	ftpr_converter_s(s);
 	if (fl->width >= len)
 		return (fl->width);
 	return (len);
@@ -61,9 +61,12 @@ static int	print_right_padded(char *s, t_flags *fl)
 	int		i;
 	int		len;
 
-	len = ft_strlen(s);
+	if (!s)
+		len = 6;
+	else
+		len = ft_strlen(s);
 	i = -1;
-	ft_putstr(s);
+	ftpr_converter_s(s);
 	if (fl->width > len)
 		while (++i < fl->width - len)
 			ft_putchar(' ');
@@ -77,27 +80,45 @@ static int	print_prec(char *s, t_flags *fl)
 	int		i;
 	int		len;
 
-	len = ft_strlen(s);
+	if (!s)
+	{
+		if (fl->prec >= 6)
+			return (ftpr_converter_s(s));
+		else
+			return (0);
+	}
+	else
+		len = ft_strlen(s);
 	i = -1;
 	if (fl->prec < len)
 		while (++i < fl->prec)
 			ft_putchar(*s++);
 	else
-		ft_putstr(s);
+		ftpr_converter_s(s);
 	if (fl->prec < len)
 		return (fl->prec);
 	return (len);
 }
 
+// ("%7.7s", NULL) -> outp = ' (null)', ret = 7
+// ("%.7s", NULL) -> outp = '(null)', ret = 6
+// ("%.5s", NULL) -> outp = '', ret = 0
+// ("%7.5s", NULL) -> outp = '       ', ret = 7
 static int	print_prec_width(char *s, t_flags *fl)
 {
 	int		i;
 	int		r;
+	int		len;
 
 	i = -1;
+	if (!s)
+		len = 6;
+	else
+		len = ft_strlen(s);
 	if (!fl->minus)
 	{
-		while (++i < fl->width - fl->prec)
+		while (++i < fl->width - fl->prec * ((fl->prec < len) && s != NULL) - \
+len * (fl->prec >= len))
 			ft_putchar(' ');
 		r = print_prec(s, fl) + i;
 	}

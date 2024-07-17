@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/15 16:17:47 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/17 23:20:40 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,22 @@ static int	print_right_padded(int d, t_flags *fl);
 
 static int	print_prec(int d, t_flags *fl);
 
-static int	print_prec_width(int d, t_flags *fl);
+static int	print_prec_width(int d, t_flags *fl, int nlen);
 
 int	ftpr_compl_converter_d(int d, t_flags *fl)
 {
 	int	r;
 
 	r = 0;
-	if (!fl->minus && !fl->dot && (fl->zero || fl->plus || fl->space || fl->width))
+	if (!fl->minus && !fl->dot && (fl->zero || fl->plus || fl->space \
+|| fl->width))
 		r = print_zero_left_padded(d, fl);
 	else if (fl->minus && !fl->dot)
 		r = print_right_padded(d, fl);
 	else if (fl->dot && (fl->prec >= fl->width))
 		r = print_prec(d, fl);
 	else if (fl->dot && (fl->prec < fl->width))
-		r = print_prec_width(d, fl);
+		r = print_prec_width(d, fl, ftpr_numstrlen(d));
 	return (r);
 }
 
@@ -46,7 +47,7 @@ static int	print_zero_left_padded(int d, t_flags *fl)
 	num = ft_itoa(d);
 	len = ft_strlen(num);
 	i = -1;
-	if (d < 0)
+	if (d < 0 && fl->zero)
 		ft_putchar('-');
 	if (d >= 0 && (fl->plus || fl->space))
 		i++;
@@ -56,7 +57,7 @@ static int	print_zero_left_padded(int d, t_flags *fl)
 	if (d >= 0 && (fl->plus || fl->space))
 		ft_putchar(fl->plus * '+' + fl->space * ' ');
 	if (d < 0)
-		ft_putstr(num + 1);
+		ft_putstr(num + 1 * fl->zero);
 	else
 		ft_putstr(num);
 	free(num);
@@ -98,6 +99,8 @@ static int	print_prec(int d, t_flags *fl)
 	num = ft_itoa(d);
 	len = ft_strlen(num);
 	i = -1;
+	if (!d && !fl->prec)
+		return (0);
 	if (d < 0)
 		ft_putchar('-');
 	if (d >= 0 && (fl->plus || fl->space))
@@ -115,24 +118,27 @@ static int	print_prec(int d, t_flags *fl)
 	return (len + ((fl->plus || fl->space) && (d >= 0)));
 }
 
-static int	print_prec_width(int d, t_flags *fl)
+static int	print_prec_width(int d, t_flags *fl, int nlen)
 {
 	int		i;
 	int		r;
+	int		sublen;
 
 	i = -1;
+	nlen -= (d < 0) + (!d);
+	sublen = fl->prec * (nlen < fl->prec) + nlen * (nlen >= fl->prec);
 	if (d < 0 || fl->plus || fl->space)
 		fl->width--;
 	if (!fl->minus)
 	{
-		while (++i < fl->width - fl->prec)
+		while (++i < fl->width - sublen)
 			ft_putchar(' ');
 		r = print_prec(d, fl) + i;
 	}
 	else
 	{
 		r = print_prec(d, fl);
-		while (++i < fl->width - fl->prec)
+		while (++i < fl->width - sublen)
 			ft_putchar(' ');
 		r += i;
 	}

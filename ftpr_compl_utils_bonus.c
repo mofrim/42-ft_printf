@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 13:43:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/14 17:12:18 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/17 22:54:18 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,17 @@ int	ftpr_compl_atoi(const char *s)
 			return (-1);
 	}
 	return ((int)num);
+}
+
+int	ftpr_numstrlen(int d)
+{
+	char	*numstr;
+	int		ret;
+
+	numstr = ft_itoa(d);
+	if (!numstr)
+		return (0);
+	ret = ft_strlen(numstr);
+	free(numstr);
+	return (ret);
 }

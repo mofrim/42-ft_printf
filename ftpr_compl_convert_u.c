@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/15 18:45:36 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/17 23:18:20 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	print_right_padded(unsigned int d, t_flags *fl);
 
 static int	print_prec(unsigned int d, t_flags *fl);
 
-static int	print_prec_width(unsigned int d, t_flags *fl);
+static int	print_prec_width(unsigned int d, t_flags *fl, int nlen);
 
 int	ftpr_compl_converter_u(unsigned int d, t_flags *fl)
 {
@@ -33,7 +33,7 @@ int	ftpr_compl_converter_u(unsigned int d, t_flags *fl)
 	else if (fl->dot && (fl->prec >= fl->width))
 		r = print_prec(d, fl);
 	else if (fl->dot && (fl->prec < fl->width))
-		r = print_prec_width(d, fl);
+		r = print_prec_width(d, fl, ftpr_numstrlen(d));
 	return (r);
 }
 
@@ -92,6 +92,8 @@ static int	print_prec(unsigned int d, t_flags *fl)
 	num = ftpr_utoa(d);
 	len = ft_strlen(num);
 	i = -1;
+	if (!d && !fl->prec)
+		return (0);
 	if (fl->space)
 		ft_putchar(' ');
 	if (fl->prec > len)
@@ -104,23 +106,26 @@ static int	print_prec(unsigned int d, t_flags *fl)
 	return (len + fl->space);
 }
 
-static int	print_prec_width(unsigned int d, t_flags *fl)
+static int	print_prec_width(unsigned int d, t_flags *fl, int nlen)
 {
 	int		i;
 	int		r;
+	int		sublen;
 
 	i = -1;
+	nlen -= (!d);
+	sublen = fl->prec * (nlen < fl->prec) + nlen * (nlen >= fl->prec);
 	fl->width -= fl->space;
 	if (!fl->minus)
 	{
-		while (++i < fl->width - fl->prec)
+		while (++i < fl->width - sublen)
 			ft_putchar(' ');
 		r = print_prec(d, fl) + i;
 	}
 	else
 	{
 		r = print_prec(d, fl);
-		while (++i < fl->width - fl->prec)
+		while (++i < fl->width - sublen)
 			ft_putchar(' ');
 		r += i;
 	}

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/16 21:19:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/17 23:21:29 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,31 @@ typedef struct s_flags
 	int	prec;
 	int	zero;
 	int	space;
-	int	padding;
 }	t_flags;
 
+// compl compl conv conv
 int		ftpr_compl_is_conv(const char *s);
 int		ftpr_check_fmt(const char *fmt);
 int		ftpr_compl_convert(va_list args, const char *fmt, int *r);
 int		ftpr_compl_do_conv(va_list args, char conv, t_flags *flags, \
 int *output);
 
+// the workers
 int		ftpr_compl_converter_d(int d, t_flags *flags);
 int		ftpr_compl_converter_u(unsigned int d, t_flags *flags);
 int		ftpr_compl_converter_c(int c, t_flags *flags);
 int		ftpr_compl_converter_s(char *s, t_flags *fl);
 
+// flag related
 t_flags	*init_flags(void);
 void	ftpr_print_flags(t_flags *fl);
 
+// bonus utils
 int		is_flag_char(char c);
 int		is_conv_char(char c);
 int		is_valid_flagconv_char(char c);
 int		ftpr_compl_atoi(const char *s);
+int		ftpr_numstrlen(int d);
 
 // from smpl ft_printf.h
 void	ft_putchar(char c);

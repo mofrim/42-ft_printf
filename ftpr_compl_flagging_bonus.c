@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:17:08 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/15 01:53:23 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/17 23:21:41 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_flags	*init_flags(void)
 	flags->prec = 0;
 	flags->zero = 0;
 	flags->space = 0;
-	flags->padding = 0;
 	return (flags);
 }
 
