@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/18 19:53:00 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/18 20:41:37 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,15 +66,16 @@ BONUS_SRCS_IN = ./ftpr_compl_parse_bonus.c \
 								./ftpr_compl_check_fmt_bonus.c \
 								./ftpr_compl_convert_bonus.c \
 								./ftpr_compl_utils_bonus.c \
+								./ftpr_compl_utils2_bonus.c \
 								./ftpr_compl_is_conv_bonus.c \
 								./ftpr_compl_flagging_bonus.c \
-								./ftpr_compl_do_conv.c \
-								./ftpr_compl_convert_d.c \
-								./ftpr_compl_convert_u.c \
-								./ftpr_compl_convert_c.c \
-								./ftpr_compl_convert_s.c \
-								./ftpr_compl_convert_p.c \
-								./ftpr_compl_convert_x.c
+								./ftpr_compl_do_conv_bonus.c \
+								./ftpr_compl_convert_d_bonus.c \
+								./ftpr_compl_convert_u_bonus.c \
+								./ftpr_compl_convert_c_bonus.c \
+								./ftpr_compl_convert_s_bonus.c \
+								./ftpr_compl_convert_p_bonus.c \
+								./ftpr_compl_convert_x_bonus.c
 
 # oh! again that stupid little hack.
 BONUS_SRCS = $(patsubst ./%,%,$(BONUS_SRCS_IN)) $(SRCS)
