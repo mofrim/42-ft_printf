@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/18 18:53:10 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/18 19:53:00 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,8 @@ BONUS_SRCS_IN = ./ftpr_compl_parse_bonus.c \
 								./ftpr_compl_convert_u.c \
 								./ftpr_compl_convert_c.c \
 								./ftpr_compl_convert_s.c \
-								./ftpr_compl_convert_p.c
+								./ftpr_compl_convert_p.c \
+								./ftpr_compl_convert_x.c
 
 # oh! again that stupid little hack.
 BONUS_SRCS = $(patsubst ./%,%,$(BONUS_SRCS_IN)) $(SRCS)
