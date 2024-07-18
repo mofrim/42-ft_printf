@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_compl_convert_u.c                             :+:      :+:    :+:   */
+/*   ftpr_compl_convert_u_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/17 23:18:20 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/18 20:42:22 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ftpr_compl_converter_u(unsigned int d, t_flags *fl)
 	else if (fl->dot && (fl->prec >= fl->width))
 		r = print_prec(d, fl);
 	else if (fl->dot && (fl->prec < fl->width))
-		r = print_prec_width(d, fl, ftpr_numstrlen(d));
+		r = print_prec_width(d, fl, ftpr_unumstrlen(d));
 	return (r);
 }
 

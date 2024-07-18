@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/18 19:57:17 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/18 20:42:50 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		is_conv_char(char c);
 int		is_valid_flagconv_char(char c);
 int		ftpr_compl_atoi(const char *s);
 int		ftpr_numstrlen(int d);
+int		ftpr_unumstrlen(unsigned int d);
 
 // from smpl ft_printf.h
 void	ft_putchar(char c);
