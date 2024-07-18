@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/17 23:21:29 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/18 18:30:56 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		ftpr_compl_converter_d(int d, t_flags *flags);
 int		ftpr_compl_converter_u(unsigned int d, t_flags *flags);
 int		ftpr_compl_converter_c(int c, t_flags *flags);
 int		ftpr_compl_converter_s(char *s, t_flags *fl);
+int		ftpr_compl_converter_p(unsigned long p, t_flags *fl);
 
 // flag related
 t_flags	*init_flags(void);
