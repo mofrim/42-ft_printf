@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:43:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/13 15:27:12 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/19 23:47:24 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ftpr_parse_args(va_list args, const char *fmt)
 // ending with a %.
 int	ftpr_check_fmt(const char *fmt)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(fmt);
 	if (!len)

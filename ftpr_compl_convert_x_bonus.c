@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_compl_convert_x.c                             :+:      :+:    :+:   */
+/*   ftpr_compl_convert_x_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/18 20:27:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/19 23:43:33 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "ft_printf_bonus.h"
 
 static int	print_left_padded(unsigned int i, t_flags *fl, int c);
@@ -33,10 +34,11 @@ int	ftpr_compl_converter_x(unsigned int i, t_flags *fl, int c)
 		r = print_prec_width(i, fl, c);
 	else
 	{
+		ftpr_print_zerox(fl->hash, c, i);
 		if (c == 'x')
-			return (ftpr_converter_x(i));
+			return (ftpr_converter_x(i) + 2 * (i != 0) * fl->hash);
 		else
-			return (ftpr_converter_xupper(i));
+			return (ftpr_converter_xupper(i) + 2 * (i != 0) * fl->hash);
 	}
 	return (r);
 }
@@ -46,11 +48,12 @@ static int	print_left_padded(unsigned int i, t_flags *fl, int c)
 	int		k;
 	int		len;
 
-	len = ftpr_hex_digits(i);
+	len = ftpr_hex_digits(i) + fl->hash * 2;
 	k = -1;
 	if (fl->width > len)
 		while (++k < fl->width - len)
 			ft_putchar(!fl->zero * ' ' + fl->zero * '0');
+	ftpr_print_zerox(fl->hash, c, i);
 	if (c == 'x')
 		ftpr_converter_x(i);
 	else
@@ -65,8 +68,9 @@ static int	print_right_padded(unsigned int i, t_flags *fl, int c)
 	int		k;
 	int		len;
 
-	len = ftpr_hex_digits(i);
+	len = ftpr_hex_digits(i) + fl->hash * 2;
 	k = -1;
+	ftpr_print_zerox(fl->hash, c, i);
 	if (c == 'x')
 		ftpr_converter_x(i);
 	else
@@ -113,16 +117,19 @@ static int	print_prec_width(unsigned int i, t_flags *fl, int c)
 	int		len;
 
 	k = -1;
-	len = (i != 0 || fl->prec) * ftpr_hex_digits(i);
+	len = (i != 0 || fl->prec) * (ftpr_hex_digits(i) + fl->hash * 2);
 	if (!fl->minus)
 	{
-		while (++k < fl->width - fl->prec * (fl->prec >= len) \
-- len * (fl->prec < len))
+		while (++k < fl->width - (fl->prec + (i != 0) * fl->hash * 2) \
+* (fl->prec >= len) - len * (fl->prec < len))
 			ft_putchar(' ');
+		ftpr_print_zerox(fl->hash, c, i);
 		r = print_prec(i, fl, c) + k;
+		r += ((i != 0) * 2 * fl->hash * (fl->width < len));
 	}
 	else
 	{
+		ftpr_print_zerox(fl->hash, c, i);
 		r = print_prec(i, fl, c);
 		while (++k < fl->width - r)
 			ft_putchar(' ');
