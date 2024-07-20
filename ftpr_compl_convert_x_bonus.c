@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/20 08:14:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/20 08:26:16 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	print_right_padded(unsigned int i, t_flags *fl, int c)
 	int		k;
 	int		len;
 
-	len = ftpr_hex_digits(i) + fl->hash * 2;
+	len = ftpr_hex_digits(i) + (i != 0) * fl->hash * 2;
 	k = -1;
 	ftpr_print_zerox(fl->hash, c, i);
 	if (c == 'x')
@@ -134,7 +134,7 @@ static int	print_prec_width(unsigned int i, t_flags *fl, int c)
 	{
 		ftpr_print_zerox(fl->hash, c, i);
 		r = print_prec(i, fl, c);
-		while (++k < fl->width - r)
+		while (++k < fl->width - (r + fl->hash * 2 * (i != 0)))
 			ft_putchar(' ');
 		r += k + (i != 0) * (fl->hash * 2);
 	}
