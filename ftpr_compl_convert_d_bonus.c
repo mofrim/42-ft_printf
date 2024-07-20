@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/20 10:25:12 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/20 10:27:31 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static int	print_right_padded(int d, t_flags *fl)
 	free(num);
 	if (fl->width > len)
 		return (fl->width);
-	return (len + (fl->space || fl->plus));
+	return (len + ((fl->space || fl->plus) && (d >= 0)));
 }
 
 static int	print_prec(int d, t_flags *fl)
