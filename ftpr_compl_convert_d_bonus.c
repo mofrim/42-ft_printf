@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_compl_convert_d.c                             :+:      :+:    :+:   */
+/*   ftpr_compl_convert_d_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/17 23:20:40 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/20 00:22:35 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ static int	print_zero_left_padded(int d, t_flags *fl)
 		ft_putchar('-');
 	if (d >= 0 && (fl->plus || fl->space))
 		i++;
+	if (d >= 0 && (fl->plus || fl->space))
+		ft_putchar(fl->plus * '+' + fl->space * ' ');
 	if (fl->width && fl->width > len)
 		while (++i < fl->width - len)
 			ft_putchar(fl->zero * '0' + !fl->zero * ' ');
-	if (d >= 0 && (fl->plus || fl->space))
-		ft_putchar(fl->plus * '+' + fl->space * ' ');
 	if (d < 0)
 		ft_putstr(num + 1 * fl->zero);
 	else
