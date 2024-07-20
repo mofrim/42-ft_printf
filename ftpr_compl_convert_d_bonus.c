@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/20 10:19:56 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/20 10:25:12 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	print_left_padded(int d, t_flags *fl)
 		ft_putchar('-');
 	if (d >= 0 && (fl->plus || fl->space) && fl->zero)
 		ft_putchar(fl->plus * '+' + fl->space * ' ');
-	if (fl->width && fl->width > len)
+	if (fl->width > len)
 		while (++i < fl->width - len - (d >= 0 && (fl->plus || fl->space)))
 			ft_putchar(fl->zero * '0' + !fl->zero * ' ');
 	if (d >= 0 && (fl->plus || fl->space) && !fl->zero)
@@ -87,7 +87,7 @@ static int	print_right_padded(int d, t_flags *fl)
 	free(num);
 	if (fl->width > len)
 		return (fl->width);
-	return (len);
+	return (len + (fl->space || fl->plus));
 }
 
 static int	print_prec(int d, t_flags *fl)
