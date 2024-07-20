@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/19 23:43:33 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/20 07:11:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	print_left_padded(unsigned int i, t_flags *fl, int c)
 	int		k;
 	int		len;
 
-	len = ftpr_hex_digits(i) + fl->hash * 2;
+	len = (i != 0) * (ftpr_hex_digits(i) + fl->hash * 2) + (!i);
 	k = -1;
 	if (fl->width > len)
 		while (++k < fl->width - len)
