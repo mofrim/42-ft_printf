@@ -6,14 +6,22 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/18 20:41:37 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/20 20:26:16 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libftprintf.a
 
 CC			= cc
+
+## for unit test to work:
 CFLAGS	= -Wall -Wextra -Werror
+
+# we are building a library which might even end up being a shared lib. so
+# generating "Position Independent Code" seems like a good idea.
+# additionally printf-unit-test needs this. some literature:
+# https://stackoverflow.com/questions/5311515/gcc-fpic-option
+PIC	=	-fPIC
 
 SRCS_IN	= ./ft_printf.c \
 					./ftpr_smpl_utils.c \
@@ -42,7 +50,7 @@ LIBFT				= $(LIBFT_PATH)/libft.a
 # taking all the files from $(SRCS) which is the first prequisite. $(HDR) is
 # only a dependency. this is why noone is trying to compile ft_printf.h
 $(OBJ_DIR)/%.o: %.c $(HDR) | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(PIC) -c $< -o $@
 
 all: $(NAME)
 
@@ -90,7 +98,7 @@ BONUS_HDR = ft_printf_bonus.h
 BONUS_NAME = libftprintf_bonus.a
 
 $(OBJ_DIR)/bonus-%.o: %.c $(HDR) $(BONUS_HDR) | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -DBONUS -c $< -o $@
+	$(CC) $(CFLAGS) $(PIC) -DBONUS -c $< -o $@
 
 .bonus: $(BONUS_OBJS)
 	rm -f .mandatory

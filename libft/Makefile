@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:53:42 by fmaurer           #+#    #+#              #
-#    Updated: 2024/06/17 13:32:21 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/20 20:28:28 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,13 @@ OBJS	= $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS))
 OBJS_BONUS = $(patsubst %.c,$(OBJS_DIR)/%.o,$(BONUS_SRCS))
 CC = cc
 CC_FLAGS = -Wall -Wextra -Werror
+
+# we are building a library which might even end up being a shared lib. so
+# generating "Position Independent Code" seems like a good idea.
+# additionally printf-unit-test needs this. some literature:
+# https://stackoverflow.com/questions/5311515/gcc-fpic-option
+PIC	=	-fPIC
+
 INC = -I ./
 
 all: $(NAME)
@@ -74,7 +81,7 @@ $(NAME): $(OBJS)
 $(OBJS_DIR)/%.o : %.c libft.h
 	@mkdir -p $(OBJS_DIR)
 	@echo "Compiling: $<"
-	@$(CC) $(CC_FLAGS) $(INC) -c $< -o $@
+	@$(CC) $(CC_FLAGS) $(PIC) $(INC) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS_DIR)
