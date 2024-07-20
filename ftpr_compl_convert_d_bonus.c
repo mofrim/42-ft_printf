@@ -6,14 +6,14 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/20 00:22:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/20 10:19:56 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include "libft/libft.h"
 
-static int	print_zero_left_padded(int d, t_flags *fl);
+static int	print_left_padded(int d, t_flags *fl);
 
 static int	print_right_padded(int d, t_flags *fl);
 
@@ -28,7 +28,7 @@ int	ftpr_compl_converter_d(int d, t_flags *fl)
 	r = 0;
 	if (!fl->minus && !fl->dot && (fl->zero || fl->plus || fl->space \
 || fl->width))
-		r = print_zero_left_padded(d, fl);
+		r = print_left_padded(d, fl);
 	else if (fl->minus && !fl->dot)
 		r = print_right_padded(d, fl);
 	else if (fl->dot && (fl->prec >= fl->width))
@@ -38,7 +38,7 @@ int	ftpr_compl_converter_d(int d, t_flags *fl)
 	return (r);
 }
 
-static int	print_zero_left_padded(int d, t_flags *fl)
+static int	print_left_padded(int d, t_flags *fl)
 {
 	char	*num;
 	int		i;
@@ -49,13 +49,13 @@ static int	print_zero_left_padded(int d, t_flags *fl)
 	i = -1;
 	if (d < 0 && fl->zero)
 		ft_putchar('-');
-	if (d >= 0 && (fl->plus || fl->space))
-		i++;
-	if (d >= 0 && (fl->plus || fl->space))
+	if (d >= 0 && (fl->plus || fl->space) && fl->zero)
 		ft_putchar(fl->plus * '+' + fl->space * ' ');
 	if (fl->width && fl->width > len)
-		while (++i < fl->width - len)
+		while (++i < fl->width - len - (d >= 0 && (fl->plus || fl->space)))
 			ft_putchar(fl->zero * '0' + !fl->zero * ' ');
+	if (d >= 0 && (fl->plus || fl->space) && !fl->zero)
+		ft_putchar(fl->plus * '+' + fl->space * ' ');
 	if (d < 0)
 		ft_putstr(num + 1 * fl->zero);
 	else
