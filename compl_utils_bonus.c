@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 13:43:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/21 09:12:19 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/21 15:00:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,33 @@ int	is_valid_flagconv_char(char c)
 	if (is_flag_char(c) || is_conv_char(c) || ft_isdigit(c) || c == '.')
 		return (1);
 	return (0);
+}
+
+/**
+ * Combined flag or conv char testing func.
+ *
+ * If you want to test for flagconvness f.ex. use `if(is_valid_flagconv(c))`
+ *
+ * @param c The char to be tested for flagconvness.
+ * @return Returns
+ * 			1	if c is a conv char
+ * 			2	if c is a flag char
+ * 			3	if c is a digit or dot
+ */
+
+int	ftpr_isflagconv(char c)
+{
+	int	rval;
+
+	rval = 0;
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || \
+c == 'u' || c == 'x' || c == 'X' || c == '%')
+		rval = 1;
+	if (c == ' ' || c == '+' || c == '-' || c == '#' || c == '0')
+		rval = 2;
+	if ((ft_isdigit(c) || c == '.') && c != '0')
+		rval = 3;
+	return (rval);
 }
 //
 // TODO: REFAC end

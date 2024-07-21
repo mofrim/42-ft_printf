@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:09:58 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/19 23:44:54 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/21 15:10:54 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	get_pmshash(t_flags **fl, const char **fmt);
 // be the conv_char afterwards. this is already enforced through
 // ftpr_compl_conv.
 //
+// TODO: REFAC: put fl->zero check in while loop into one of the functions
 int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 {
 	t_flags	*flags;
@@ -38,7 +39,8 @@ int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 	conv_seq_len = 1;
 	if (!flags)
 		return (-1);
-	while (!is_conv_char(*(++fmt)))
+	// while (!is_conv_char(*(++fmt)))
+	while (ftpr_isflagconv(*(++fmt)) != 1)
 	{
 		get_pmshash(&flags, &fmt);
 		get_prec_width(&flags, &fmt, &conv_seq_len);
