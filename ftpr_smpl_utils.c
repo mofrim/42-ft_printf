@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 09:39:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/12 11:21:42 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/21 09:06:27 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "ft_printf.h"
 #endif
 
-// some utitlity functions for ftpr
+// some utitlity functions for ftpr smpl
 
 void	ft_putchar(char c)
 {
