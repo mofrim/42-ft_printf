@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:43:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/19 23:47:24 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/21 08:03:20 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ftpr_parse_args(va_list args, const char *fmt)
 		}
 		else
 		{
-			ft_putchar_fd(*fmt, 1);
+			ft_putchar(*fmt);
 			r++;
 			fmt++;
 		}
