@@ -6,12 +6,15 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 13:43:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/17 22:54:18 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/21 09:12:19 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include "libft/libft.h"
+
+// TODO: REFAC: merge to one func with different rvals.
+//
 
 // cspdiuxX%
 int	is_conv_char(char c)
@@ -35,6 +38,8 @@ int	is_valid_flagconv_char(char c)
 		return (1);
 	return (0);
 }
+//
+// TODO: REFAC end
 
 // well, i need an atoi which detects a possible overflow. input is a
 // string of digits representing a non-negtive number
@@ -52,6 +57,7 @@ int	ftpr_compl_atoi(const char *s)
 	return ((int)num);
 }
 
+// @brief Text.
 int	ftpr_numstrlen(int d)
 {
 	char	*numstr;
