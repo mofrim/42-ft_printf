@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_compl_convert_c.c                             :+:      :+:    :+:   */
+/*   ftpr_compl_convert_c_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/16 21:12:57 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/21 08:08:38 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	print_right_padded(int d, t_flags *fl);
 
-static int	print_width(int d, t_flags *fl);
+static int	print_left_padded(int d, t_flags *fl);
 
 int	ftpr_compl_converter_c(int d, t_flags *fl)
 {
@@ -24,7 +24,7 @@ int	ftpr_compl_converter_c(int d, t_flags *fl)
 	if (fl->minus)
 		r = print_right_padded(d, fl);
 	else if (!fl->minus)
-		r = print_width(d, fl);
+		r = print_left_padded(d, fl);
 	return (r);
 }
 
@@ -42,7 +42,7 @@ static int	print_right_padded(int d, t_flags *fl)
 	return (1);
 }
 
-static int	print_width(int d, t_flags *fl)
+static int	print_left_padded(int d, t_flags *fl)
 {
 	int		i;
 
