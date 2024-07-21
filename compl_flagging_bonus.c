@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_compl_flagging_bonus.c                        :+:      :+:    :+:   */
+/*   compl_flagging_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:17:08 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/17 23:21:41 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/21 12:31:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-// WARN: do not forget to free me!!!
 t_flags	*init_flags(void)
 {
 	t_flags	*flags;

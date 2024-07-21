@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftpr_smpl_utoa.c                                   :+:      :+:    :+:   */
+/*   smpl_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 23:49:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/12 11:21:34 by fmaurer          ###   ########.fr       */
+/*   Created: 2024/06/21 09:39:47 by fmaurer           #+#    #+#             */
+/*   Updated: 2024/07/21 09:06:27 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,14 @@
 # include "ft_printf.h"
 #endif
 
-static int	dec(unsigned int n)
-{
-	int	d;
+// some utitlity functions for ftpr smpl
 
-	if (!n)
-		return (1);
-	d = 0;
-	while (n)
-	{
-		n /= 10;
-		d++;
-	}
-	return (d);
+void	ft_putchar(char c)
+{
+	ft_putchar_fd(c, 1);
 }
 
-char	*ftpr_utoa(unsigned int n)
+void	ft_putstr(char *s)
 {
-	char	*a;
-	int		i;
-
-	a = (char *)malloc(dec(n) * sizeof (char) + 1);
-	if (!a)
-		return (NULL);
-	a[dec(n)] = '\0';
-	i = dec(n);
-	while (--i >= 0)
-	{
-		a[i] = '0' + n % 10;
-		n /= 10;
-	}
-	return (a);
+	ft_putstr_fd(s, 1);
 }

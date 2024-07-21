@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/20 20:26:16 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/21 12:30:25 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,12 @@ CFLAGS	= -Wall -Wextra -Werror
 PIC	=	-fPIC
 
 SRCS_IN	= ./ft_printf.c \
-					./ftpr_smpl_utils.c \
-					./ftpr_smpl_utoa.c \
-					./ftpr_smpl_convert_cdsi.c \
-					./ftpr_smpl_convert_p.c \
-					./ftpr_smpl_convert_x.c \
-					./ftpr_smpl_convert.c
+					./smpl_utils.c \
+					./smpl_utoa.c \
+					./smpl_convert_cdsi.c \
+					./smpl_convert_p.c \
+					./smpl_convert_x.c \
+					./smpl_convert.c
 
 # stupid little hack, but good for learning some more make voodoo ;)
 # removes leading './' again
@@ -70,20 +70,20 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 ########################################## bonus start
-BONUS_SRCS_IN = ./ftpr_compl_parse_bonus.c \
-								./ftpr_compl_check_fmt_bonus.c \
-								./ftpr_compl_convert_bonus.c \
-								./ftpr_compl_utils_bonus.c \
-								./ftpr_compl_utils2_bonus.c \
-								./ftpr_compl_is_conv_bonus.c \
-								./ftpr_compl_flagging_bonus.c \
-								./ftpr_compl_do_conv_bonus.c \
-								./ftpr_compl_convert_d_bonus.c \
-								./ftpr_compl_convert_u_bonus.c \
-								./ftpr_compl_convert_c_bonus.c \
-								./ftpr_compl_convert_s_bonus.c \
-								./ftpr_compl_convert_p_bonus.c \
-								./ftpr_compl_convert_x_bonus.c
+BONUS_SRCS_IN = ./compl_parse_bonus.c \
+								./compl_check_fmt_bonus.c \
+								./compl_convert_bonus.c \
+								./compl_utils_bonus.c \
+								./compl_utils2_bonus.c \
+								./compl_is_conv_bonus.c \
+								./compl_flagging_bonus.c \
+								./compl_do_conv_bonus.c \
+								./compl_convert_d_bonus.c \
+								./compl_convert_u_bonus.c \
+								./compl_convert_c_bonus.c \
+								./compl_convert_s_bonus.c \
+								./compl_convert_p_bonus.c \
+								./compl_convert_x_bonus.c
 
 # oh! again that stupid little hack.
 BONUS_SRCS = $(patsubst ./%,%,$(BONUS_SRCS_IN)) $(SRCS)
