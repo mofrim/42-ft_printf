@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:09:58 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/21 15:10:54 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/21 15:23:31 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ static void	get_prec_width(t_flags **fl, const char **fmt, int *conv_seq_len);
 
 static void	get_pmshash(t_flags **fl, const char **fmt);
 
+static void	get_zero(t_flags **fl, const char **fmt);
+
+// TODO: REFAC: what about the error handling idea?! Keep something from the
+// comments below.
+//
 // for now: return -1 when anything goes wrong from here on down.
 // return length of scanned conversion sequence including '%' and conv_char
 //
@@ -28,8 +33,6 @@ static void	get_pmshash(t_flags **fl, const char **fmt);
 // where we get to extracting prec to flags->prec it is sure that there can only
 // be the conv_char afterwards. this is already enforced through
 // ftpr_compl_conv.
-//
-// TODO: REFAC: put fl->zero check in while loop into one of the functions
 int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 {
 	t_flags	*flags;
@@ -39,13 +42,11 @@ int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 	conv_seq_len = 1;
 	if (!flags)
 		return (-1);
-	// while (!is_conv_char(*(++fmt)))
 	while (ftpr_isflagconv(*(++fmt)) != 1)
 	{
 		get_pmshash(&flags, &fmt);
 		get_prec_width(&flags, &fmt, &conv_seq_len);
-		if (*fmt == '0' && !flags->width && !flags->dot && !flags->minus)
-			flags->zero = 1;
+		get_zero(&flags, &fmt);
 		conv_seq_len++;
 	}
 	ftpr_compl_do_conv(args, *fmt, flags, output);
@@ -96,4 +97,10 @@ static void	get_prec_width(t_flags **fl, const char **fmt, int *conv_seq_len)
 		(*fmt) += ft_strlen(tmp) - 1;
 		free(tmp);
 	}
+}
+
+static void	get_zero(t_flags **fl, const char **fmt)
+{
+	if (**fmt == '0' && !(*fl)->width && !(*fl)->dot && !(*fl)->minus)
+		(*fl)->zero = 1;
 }
