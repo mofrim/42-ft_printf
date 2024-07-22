@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 11:53:13 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 12:13:15 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	ftpr_print_flags(t_flags *fl);
 // bonus utils
 int		ftpr_isflagconv(char c);
 int		ftpr_atoi_overflow(const char *s);
-int		ftpr_numstrlen(int d);
-int		ftpr_unumstrlen(unsigned int d);
+int		ftpr_intstrlen(int d);
+int		ftpr_uintstrlen(unsigned int d);
 void	ftpr_print_zerox(int doit, int c, unsigned int num);
 
 // from smpl ft_printf.h

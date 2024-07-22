@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 13:43:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 12:09:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 12:13:12 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ftpr_atoi_overflow(const char *s)
 }
 
 /* Return strlen of integer converted to ascii string. */
-int	ftpr_numstrlen(int d)
+int	ftpr_intstrlen(int d)
 {
 	char	*numstr;
 	int		ret;
@@ -79,7 +79,7 @@ int	ftpr_numstrlen(int d)
 	return (ret);
 }
 
-int	ftpr_unumstrlen(unsigned int d)
+int	ftpr_uintstrlen(unsigned int d)
 {
 	char	*numstr;
 	int		ret;
