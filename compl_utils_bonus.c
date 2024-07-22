@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 13:43:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 11:53:50 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 12:07:59 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,19 @@ c == 'u' || c == 'x' || c == 'X' || c == '%')
 	return (rval);
 }
 
-// well, i need an atoi which detects a possible overflow. input is a
-// string of digits representing a non-negtive number
-// TODO: rename. Maybe "ftpr_atoi_overflow".
+/**
+ * Convert non-negative string of digits to int. Detect possible int overflow.
+ *
+ * @return -1 if first char is no digit or if number represented by string is
+ * bigger than INT_MAX. num in [0, INT_MAX] else.
+ */
 int	ftpr_atoi_overflow(const char *s)
 {
 	long	num;
 
 	num = 0;
+	if (!ft_isdigit(*s))
+		return (-1);
 	while (ft_isdigit(*s))
 	{
 		num = num * 10 + *s++ - '0';
@@ -60,7 +65,7 @@ int	ftpr_atoi_overflow(const char *s)
 	return ((int)num);
 }
 
-// @brief Text.
+/* Return strlen of integer converted to ascii string. */
 int	ftpr_numstrlen(int d)
 {
 	char	*numstr;
