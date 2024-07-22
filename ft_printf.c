@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:43:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 11:39:58 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 11:45:11 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ int	ftpr_parse_args(va_list args, const char *fmt)
 	return (r);
 }
 
-// in mandatory / smpl case we do not know anything about any flags ;)
+// Initial check of format-string for open-end conversion.
 //
+// in mandatory / smpl case we do not know anything about any flags ;)
 // so, the only possibility vor invalid conversions we can check here: do we
 // have a fmt string like "%" or "*****%", which is, the fmtstring is somehow
 // ending with a %.
