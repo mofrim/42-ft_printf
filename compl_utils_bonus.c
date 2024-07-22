@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 13:43:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/21 15:15:22 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 11:25:07 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 /**
  * Combined flag or conv char testing func.
  *
- * If you want to test for flagconvness f.ex. use `if(is_valid_flagconv(c))`
+ * If you want to test for flagconvness f.ex. use `if(ftpr_isflagconv(c))`. If
+ * only convness of char c should be tested: if(ftpr_isflagconv(c) == 1)...
+ * NOTE: well, actually not 100% clean code. having seperate functions would be
+ * cleaner. but i choose compactness over cleanliness here.
  *
  * @param c The char to be tested for flagconvness.
  * @return Returns
@@ -42,6 +45,7 @@ c == 'u' || c == 'x' || c == 'X' || c == '%')
 
 // well, i need an atoi which detects a possible overflow. input is a
 // string of digits representing a non-negtive number
+// TODO: rename. Maybe "ftpr_atoi_overflow".
 int	ftpr_compl_atoi(const char *s)
 {
 	long	num;

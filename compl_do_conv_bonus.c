@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:50:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/19 23:46:43 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 11:32:07 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	percent(void);
 
+// TODO: maybe refactor. free flags in here
 int	ftpr_compl_do_conv(va_list args, char conv, t_flags *flags, int *output)
 {
 	if (conv == '%')
