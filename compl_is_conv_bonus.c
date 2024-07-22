@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:45:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/21 15:15:56 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 11:53:21 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ftpr_compl_is_conv(const char *s)
 			return (1);
 		if (ft_isdigit(*s) && !num && *s != '0')
 			num = 1;
-		if (ft_isdigit(*s) && *s != '0' && ftpr_compl_atoi(s) == -1)
+		if (ft_isdigit(*s) && *s != '0' && ftpr_atoi_overflow(s) == -1)
 			return (-1);
 		if (*s == '.')
 			dot = 1;

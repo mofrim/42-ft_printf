@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:09:58 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 11:34:51 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 11:53:47 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	get_prec_width(t_flags **fl, const char **fmt, int *conv_seq_len)
 		(*fl)->zero = 0;
 		if (ft_isdigit(*(*fmt + 1)))
 		{
-			(*fl)->prec = ftpr_compl_atoi((*fmt + 1));
+			(*fl)->prec = ftpr_atoi_overflow((*fmt + 1));
 			tmp = ft_itoa((*fl)->prec);
 			*conv_seq_len += ft_strlen(tmp);
 			(*fmt) += ft_strlen(tmp);
@@ -94,7 +94,7 @@ static void	get_prec_width(t_flags **fl, const char **fmt, int *conv_seq_len)
 	}
 	if (ft_isdigit(**fmt) && **fmt != '0' && !(*fl)->dot)
 	{
-		(*fl)->width = ftpr_compl_atoi(*fmt);
+		(*fl)->width = ftpr_atoi_overflow(*fmt);
 		tmp = ft_itoa((*fl)->width);
 		*conv_seq_len += ft_strlen(tmp) - 1;
 		(*fmt) += ft_strlen(tmp) - 1;

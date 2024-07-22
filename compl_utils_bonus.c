@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 13:43:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 11:25:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 11:53:50 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ c == 'u' || c == 'x' || c == 'X' || c == '%')
 // well, i need an atoi which detects a possible overflow. input is a
 // string of digits representing a non-negtive number
 // TODO: rename. Maybe "ftpr_atoi_overflow".
-int	ftpr_compl_atoi(const char *s)
+int	ftpr_atoi_overflow(const char *s)
 {
 	long	num;
 
