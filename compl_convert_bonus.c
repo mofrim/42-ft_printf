@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:09:58 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/21 15:23:31 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 11:34:51 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,27 @@ static void	get_zero(t_flags **fl, const char **fmt);
 // for now: return -1 when anything goes wrong from here on down.
 // return length of scanned conversion sequence including '%' and conv_char
 //
-// at function call fmt is pointing to '%'. if we init conv_seq_len = 1, then at
-// the end we can add it to fmt and this will make point fmt to the first char
-// after the convseq.
+// at function call fmt is pointing to '%'. we have at least the '%' and a conv
+// char. if we init conv_seq_len = 2, then at the end we can add it to fmt and
+// this will make point fmt to the first char after the convseq.
 //
 // NOTE: a bit ugly with this outsourcing of get_prec_width. still i want to
 // note, that due to my intense testing of format string beforehand the case,
 // where we get to extracting prec to flags->prec it is sure that there can only
 // be the conv_char afterwards. this is already enforced through
 // ftpr_compl_conv.
+//
+// TODO: rename and/or refactor to split functions. rename maybe:
+// "ftpr_gather_flags_start_conv"
 int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 {
 	t_flags	*flags;
 	int		conv_seq_len;
 
 	flags = init_flags();
-	conv_seq_len = 1;
 	if (!flags)
 		return (-1);
+	conv_seq_len = 2;
 	while (ftpr_isflagconv(*(++fmt)) != 1)
 	{
 		get_pmshash(&flags, &fmt);
@@ -51,7 +54,7 @@ int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 	}
 	ftpr_compl_do_conv(args, *fmt, flags, output);
 	free(flags);
-	return (conv_seq_len + 1);
+	return (conv_seq_len);
 }
 
 static void	get_pmshash(t_flags **fl, const char **fmt)
