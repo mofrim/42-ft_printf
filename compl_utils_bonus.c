@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 13:43:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 12:07:59 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 12:09:53 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,27 @@ int	ftpr_numstrlen(int d)
 	ret = ft_strlen(numstr);
 	free(numstr);
 	return (ret);
+}
+
+int	ftpr_unumstrlen(unsigned int d)
+{
+	char	*numstr;
+	int		ret;
+
+	numstr = ftpr_utoa(d);
+	if (!numstr)
+		return (0);
+	ret = ft_strlen(numstr);
+	free(numstr);
+	return (ret);
+}
+
+void	ftpr_print_zerox(int doit, int c, unsigned int num)
+{
+	if (!doit || !num)
+		return ;
+	if (c == 'x')
+		ft_putstr("0x");
+	if (c == 'X')
+		ft_putstr("0X");
 }

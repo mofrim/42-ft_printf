@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/21 12:30:25 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/22 12:10:10 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,6 @@ BONUS_SRCS_IN = ./compl_parse_bonus.c \
 								./compl_check_fmt_bonus.c \
 								./compl_convert_bonus.c \
 								./compl_utils_bonus.c \
-								./compl_utils2_bonus.c \
 								./compl_is_conv_bonus.c \
 								./compl_flagging_bonus.c \
 								./compl_do_conv_bonus.c \
