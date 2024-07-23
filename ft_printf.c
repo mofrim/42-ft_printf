@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:43:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 09:19:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:00:34 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ft_printf.h"
 #endif
 
+/* FT_PRINTF! Supports "diucspxXX" with "0# .-+". */
 int	ft_printf(const char *fmt, ...)
 {
 	va_list	args;
@@ -33,6 +34,31 @@ int	ft_printf(const char *fmt, ...)
 
 #ifndef BONUS
 
+/**
+ * Initial check of format-string for open-end conversion.
+ *
+ * In mandatory / smpl case we do not know anything about any flags ;) so, the
+ * only possibility vor invalid conversions we can check here: do we have a fmt
+ * string like "%" or "*****%", which is, the fmtstring is somehow ending with a
+ * percent sign.
+ */
+int	ftpr_check_fmt(const char *fmt)
+{
+	int	len;
+
+	len = ft_strlen(fmt);
+	if (!len)
+		return (1);
+	fmt += len - 1;
+	if (*fmt == '%' && len == 1)
+		return (0);
+	if (len > 1)
+		if (*fmt == '%' && *(fmt - 1) != '%' )
+			return (0);
+	return (1);
+}
+
+/* Scan through fmt-string and convert if conversion is found. */
 int	ftpr_parse_args(va_list args, const char *fmt)
 {
 	int	c;
@@ -54,37 +80,15 @@ int	ftpr_parse_args(va_list args, const char *fmt)
 	return (r);
 }
 
-// Initial check of format-string for open-end conversion.
-//
-// in mandatory / smpl case we do not know anything about any flags ;)
-// so, the only possibility vor invalid conversions we can check here: do we
-// have a fmt string like "%" or "*****%", which is, the fmtstring is somehow
-// ending with a %.
-int	ftpr_check_fmt(const char *fmt)
-{
-	int	len;
-
-	len = ft_strlen(fmt);
-	if (!len)
-		return (1);
-	fmt += len - 1;
-	if (*fmt == '%' && len == 1)
-		return (0);
-	if (len > 1)
-		if (*fmt == '%' && *(fmt - 1) != '%' )
-			return (0);
-	return (1);
-}
-
 #endif
 
-// ::TESTS MANDATORY::
+// ::SOME TESTS MANDATORY::
 
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include <string.h>
 // #include <limits.h>
-// #include "../ft_printf.h"
+// #include "ft_printf.h"
 //
 // // colors
 // #define RED "\033[1;31m"

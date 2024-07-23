@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 09:23:43 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:01:15 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # include "ft_printf_bonus.h"
 #else 
 # include "ft_printf.h"
-#endif /* ifndef BONUS */
+#endif
 
 // take this if we are not doing the bonus part.
 #ifndef BONUS
@@ -27,7 +27,7 @@ int	ftpr_is_conversion(const char *s)
 	return (0);
 }
 
-#endif /* ifndef BONUS */
+#endif
 
 /* Is current conv string a smpl conv? */
 int	ftpr_smpl_isconv(const char *s)
