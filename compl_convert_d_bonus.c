@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 10:33:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 12:46:25 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int	ftpr_compl_converter_d(int d, t_flags *fl)
 /* Helper function. Print left padded. */
 static int	print_left_padded(int d, t_flags *fl)
 {
-	char	*num;
+	char	*numstr;
 	int		i;
 	int		len;
 
-	num = ft_itoa(d);
-	len = ft_strlen(num);
+	numstr = ft_itoa(d);
+	len = ft_strlen(numstr);
 	i = -1;
 	if (d < 0 && fl->zero)
 		ft_putchar('-');
@@ -59,10 +59,10 @@ static int	print_left_padded(int d, t_flags *fl)
 	if (d >= 0 && (fl->plus || fl->space) && !fl->zero)
 		ft_putchar(fl->plus * '+' + fl->space * ' ');
 	if (d < 0)
-		ft_putstr(num + 1 * fl->zero);
+		ft_putstr(numstr + 1 * fl->zero);
 	else
-		ft_putstr(num);
-	free(num);
+		ft_putstr(numstr);
+	free(numstr);
 	if (fl->width >= len + ((fl->plus || fl->space) && (d >= 0)))
 		return (fl->width);
 	return (len + ((fl->plus || fl->space) && (d >= 0)));
@@ -71,23 +71,23 @@ static int	print_left_padded(int d, t_flags *fl)
 /* Helper function. Print right padded. */
 static int	print_right_padded(int d, t_flags *fl)
 {
-	char	*num;
+	char	*numstr;
 	int		i;
 	int		len;
 
-	num = ft_itoa(d);
-	len = ft_strlen(num);
+	numstr = ft_itoa(d);
+	len = ft_strlen(numstr);
 	i = -1;
 	if (d >= 0 && (fl->plus || fl->space))
 	{
 		ft_putchar(fl->plus * '+' + fl->space * ' ');
 		i++;
 	}
-	ft_putstr(num);
+	ft_putstr(numstr);
 	if (fl->width && fl->width > len)
 		while (++i < fl->width - len)
 			ft_putchar(' ');
-	free(num);
+	free(numstr);
 	if (fl->width > len)
 		return (fl->width);
 	return (len + ((fl->space || fl->plus) && (d >= 0)));
@@ -96,12 +96,12 @@ static int	print_right_padded(int d, t_flags *fl)
 /* Helper function. Print with precission. */
 static int	print_prec(int d, t_flags *fl)
 {
-	char	*num;
+	char	*numstr;
 	int		i;
 	int		len;
 
-	num = ft_itoa(d);
-	len = ft_strlen(num);
+	numstr = ft_itoa(d);
+	len = ft_strlen(numstr);
 	i = -1;
 	if (!d && !fl->prec)
 		return (0);
@@ -113,16 +113,21 @@ static int	print_prec(int d, t_flags *fl)
 		while (++i < fl->prec - len + (d < 0))
 			ft_putchar('0');
 	if (d < 0)
-		ft_putstr(num + 1);
+		ft_putstr(numstr + 1);
 	else
-		ft_putstr(num);
-	free(num);
+		ft_putstr(numstr);
+	free(numstr);
 	if (fl->prec >= len)
 		return (fl->prec + ((fl->plus || fl->space) && (d >= 0)) + (d < 0));
 	return (len + ((fl->plus || fl->space) && (d >= 0)));
 }
 
-/* Helper function. Print with precission & width. */
+/* Helper function. Print with precission & width. 
+ *
+ * The @param nlen is hold the strlen of the number converted to ascii string.
+ * Which actually is a bit of a codelen hack.
+ *
+ */
 static int	print_prec_width(int d, t_flags *fl, int nlen)
 {
 	int		i;

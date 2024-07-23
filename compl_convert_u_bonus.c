@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 10:30:10 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 12:46:56 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	ftpr_compl_converter_u(unsigned int d, t_flags *fl)
 /* Helper function. Print left padded. */
 static int	print_left_padded(unsigned int d, t_flags *fl)
 {
-	char	*num;
+	char	*numstr;
 	int		i;
 	int		len;
 
-	num = ftpr_utoa(d);
-	len = ft_strlen(num);
+	numstr = ftpr_utoa(d);
+	len = ft_strlen(numstr);
 	i = -1;
 	i += fl->space;
 	if (fl->width && fl->width > len)
@@ -54,8 +54,8 @@ static int	print_left_padded(unsigned int d, t_flags *fl)
 			ft_putchar(fl->zero * '0' + !fl->zero * ' ');
 	if (fl->space)
 		ft_putchar(fl->plus * '+' + fl->space * ' ');
-	ft_putstr(num);
-	free(num);
+	ft_putstr(numstr);
+	free(numstr);
 	if (fl->width >= len)
 		return (fl->width);
 	return (len + fl->space);
@@ -64,23 +64,23 @@ static int	print_left_padded(unsigned int d, t_flags *fl)
 /* Helper function. Print right padded. */
 static int	print_right_padded(unsigned int d, t_flags *fl)
 {
-	char	*num;
+	char	*numstr;
 	int		i;
 	int		len;
 
-	num = ftpr_utoa(d);
-	len = ft_strlen(num);
+	numstr = ftpr_utoa(d);
+	len = ft_strlen(numstr);
 	i = -1;
 	if (fl->space)
 	{
 		ft_putchar(' ');
 		i++;
 	}
-	ft_putstr(num);
+	ft_putstr(numstr);
 	if (fl->width && fl->width > len)
 		while (++i < fl->width - len)
 			ft_putchar(' ');
-	free(num);
+	free(numstr);
 	if (fl->width > len)
 		return (fl->width);
 	return (len);
@@ -89,12 +89,12 @@ static int	print_right_padded(unsigned int d, t_flags *fl)
 /* Helper function. Print print with precission. */
 static int	print_prec(unsigned int d, t_flags *fl)
 {
-	char	*num;
+	char	*numstr;
 	int		i;
 	int		len;
 
-	num = ftpr_utoa(d);
-	len = ft_strlen(num);
+	numstr = ftpr_utoa(d);
+	len = ft_strlen(numstr);
 	i = -1;
 	if (!d && !fl->prec)
 		return (0);
@@ -103,8 +103,8 @@ static int	print_prec(unsigned int d, t_flags *fl)
 	if (fl->prec > len)
 		while (++i < fl->prec - len)
 			ft_putchar('0');
-	ft_putstr(num);
-	free(num);
+	ft_putstr(numstr);
+	free(numstr);
 	if (fl->prec >= len)
 		return (fl->prec + fl->space);
 	return (len + fl->space);
