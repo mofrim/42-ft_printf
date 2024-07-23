@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 10:17:25 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 08:41:09 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 08:49:27 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 static char	*hextoa_prefix(unsigned long n);
 
-// we have to deal with unsigned long values and put them to hex
+/* Outputs address of argument in printf format. */
 int	ftpr_converter_p(unsigned long l)
 {
 	char	*num;
@@ -33,6 +33,7 @@ int	ftpr_converter_p(unsigned long l)
 	return (r);
 }
 
+/* Generate and return adress string from unsigned long input number. */
 static char	*hextoa_prefix(unsigned long n)
 {
 	char	*a;
@@ -57,6 +58,7 @@ static char	*hextoa_prefix(unsigned long n)
 	return (a);
 }
 
+/* Calculate number of digits param would have in hex. */
 int	ftpr_hex_digits(unsigned long n)
 {
 	int	d;
