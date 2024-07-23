@@ -6,14 +6,14 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 12:13:18 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 12:18:35 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include "libft/libft.h"
 
-static int	print_zero_left_padded(unsigned int d, t_flags *fl);
+static int	print_left_padded(unsigned int d, t_flags *fl);
 
 static int	print_right_padded(unsigned int d, t_flags *fl);
 
@@ -27,7 +27,7 @@ int	ftpr_compl_converter_u(unsigned int d, t_flags *fl)
 
 	r = 0;
 	if (!fl->minus && !fl->dot && (fl->zero || fl->space || fl->width))
-		r = print_zero_left_padded(d, fl);
+		r = print_left_padded(d, fl);
 	else if (fl->minus && !fl->dot)
 		r = print_right_padded(d, fl);
 	else if (fl->dot && (fl->prec >= fl->width))
@@ -37,7 +37,7 @@ int	ftpr_compl_converter_u(unsigned int d, t_flags *fl)
 	return (r);
 }
 
-static int	print_zero_left_padded(unsigned int d, t_flags *fl)
+static int	print_left_padded(unsigned int d, t_flags *fl)
 {
 	char	*num;
 	int		i;
@@ -59,6 +59,7 @@ static int	print_zero_left_padded(unsigned int d, t_flags *fl)
 	return (len + fl->space);
 }
 
+// TODO: REFAC: use instrlen here? not ft_itoa and free???
 static int	print_right_padded(unsigned int d, t_flags *fl)
 {
 	char	*num;
