@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:09:58 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 09:51:03 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:17:47 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,21 @@ static void	get_pmshash(t_flags **fl, const char **fmt);
 
 static void	get_zero(t_flags **fl, const char **fmt);
 
-// for now: return -1 when anything goes wrong from here on down.
-// return length of scanned conversion sequence including '%' and conv_char
-//
-// at function call fmt is pointing to '%'. we have at least the '%' and a conv
-// char. if we init conv_seq_len = 2, then at the end we can add it to fmt and
-// this will make point fmt to the first char after the convseq.
-//
-// NOTE: a bit ugly with this outsourcing of get_prec_width. still i want to
-// note, that due to my intense testing of format string beforehand the case,
-// where we get to extracting prec to flags->prec it is sure that there can only
-// be the conv_char afterwards. this is already enforced through
-// ftpr_compl_conv.
-//
-// TODO: rename and/or refactor to split functions. rename maybe:
-// "ftpr_gather_flags_start_conv"
-int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
+/*
+ * Gathers flags into t_flags struct and executes conversion with that.
+ *
+ * @return Length of scanned conversion sequence including '%' and conv_char
+ *
+ * At function call fmt is pointing to '%'. we have at least the '%' and a conv
+ * char. if we init conv_seq_len = 2, then at the end we can add it to fmt and
+ * this will make point fmt to the first char after the convseq.
+ *
+ * NOTE: I want to note, that due to my intense testing of format string
+ * beforehand at the point we get to extracting prec to flags->prec it is
+ * sure that there can only be the conv_char afterwards. this is already
+ * enforced through ftpr_compl_conv.
+ */
+int	ftpr_gather_flags_and_conv(va_list args, const char *fmt, int *output)
 {
 	t_flags	*flags;
 	int		conv_seq_len;
@@ -54,6 +53,7 @@ int	ftpr_compl_convert(va_list args, const char *fmt, int *output)
 	return (conv_seq_len);
 }
 
+/* Helper function. Gather "+ -#" flags. */
 static void	get_pmshash(t_flags **fl, const char **fmt)
 {
 	if (**fmt == '+')
@@ -72,6 +72,7 @@ static void	get_pmshash(t_flags **fl, const char **fmt)
 		(*fl)->hash = 1;
 }
 
+/* Helper func. Gather prec and width. */
 static void	get_prec_width(t_flags **fl, const char **fmt, int *conv_seq_len)
 {
 	char	*tmp;
@@ -99,6 +100,7 @@ static void	get_prec_width(t_flags **fl, const char **fmt, int *conv_seq_len)
 	}
 }
 
+/* Helper function. Gather zero flag. */
 static void	get_zero(t_flags **fl, const char **fmt)
 {
 	if (**fmt == '0' && !(*fl)->width && !(*fl)->dot && !(*fl)->minus)

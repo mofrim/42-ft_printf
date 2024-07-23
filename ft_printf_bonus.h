@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 09:48:50 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:10:13 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ typedef struct s_flags
 	int	space;
 }	t_flags;
 
-//
-// TODO: sort all funcs in order of possible code execution
-//
-
 int		ft_printf(const char *f, ...);
 int		ftpr_check_fmt(const char *fmt);
 int		ftpr_parse_args(va_list args, const char *fmt);
@@ -40,7 +36,7 @@ int		ftpr_smpl_isconv(const char *s);
 int		ftpr_compl_isconv(const char *s);
 
 int		ftpr_smpl_convert(va_list args, const char *s, int *r);
-int		ftpr_compl_convert(va_list args, const char *fmt, int *r);
+int		ftpr_gather_flags_and_conv(va_list args, const char *fmt, int *r);
 
 int		ftpr_compl_do_conv(va_list args, char conv, t_flags *flags, \
 int *output);

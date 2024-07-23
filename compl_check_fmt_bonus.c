@@ -6,17 +6,18 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 14:26:06 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 08:29:44 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:10:21 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-/**
+/*
  * Checks for INVALID conversions.
  *
- * this is necessary in case of incomplete conversions present in fmt_string
- * nothing should be printed at all and -1 be be returned by ft_printf.
+ * Cases for this: Conversion running off the strings end. To >INT_MAX prec or
+ * width numbers.
+ * 
  */
 int	ftpr_check_fmt(const char *fmt)
 {
