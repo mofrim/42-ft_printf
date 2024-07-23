@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 10:17:25 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 08:38:44 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 08:41:09 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static char	*hextoa_prefix(unsigned long n)
 	a = (char *)ft_calloc(ftpr_hex_digits(n) + 3, sizeof(char));
 	if (!a)
 		return (NULL);
-	a[ftpr_hex_digits(n)] = '\0';
 	if (!ft_memcpy(a, "0x", 2))
 		return (NULL);
 	i = ftpr_hex_digits(n) + 2;
