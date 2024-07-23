@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 09:04:19 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 09:23:43 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@
 // take this if we are not doing the bonus part.
 #ifndef BONUS
 
-// check if substr at `s` is a simple conv or flagged conv
-// Return Values:
-// 		0	no conv
-// 		1	only simple conv needed
+/* Wrapper func for smpl_isconv. Only there for code seperation. */
 int	ftpr_is_conversion(const char *s)
 {
 	if (ftpr_smpl_is_conv(s))
@@ -32,6 +29,7 @@ int	ftpr_is_conversion(const char *s)
 
 #endif /* ifndef BONUS */
 
+/* Is current conv string a smpl conv? */
 int	ftpr_smpl_isconv(const char *s)
 {
 	if (!ft_strncmp(s, "%c", 2) || !ft_strncmp(s, "%s", 2) || \
@@ -43,11 +41,7 @@ int	ftpr_smpl_isconv(const char *s)
 	return (0);
 }
 
-// aaaah, this is a little bit dirty. i just let ftpr_smpl_convert return 2
-// because it convenient for shortening code in ftpr_parse_args.
-//
-// TODO: actually there could be some real error handling be happening
-// here. maybe...
+/* Calls the actual conversion functions. In smpl case always returns 2. */
 int	ftpr_smpl_convert(va_list args, const char *s, int *r)
 {
 	if (!ft_strncmp(s, "%c", 2))
