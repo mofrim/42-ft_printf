@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:09:58 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 11:53:47 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 09:51:03 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ static void	get_pmshash(t_flags **fl, const char **fmt);
 
 static void	get_zero(t_flags **fl, const char **fmt);
 
-// TODO: REFAC: what about the error handling idea?! Keep something from the
-// comments below.
-//
 // for now: return -1 when anything goes wrong from here on down.
 // return length of scanned conversion sequence including '%' and conv_char
 //
