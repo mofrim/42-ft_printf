@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 12:21:00 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 08:27:35 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_flags
 int		ft_printf(const char *f, ...);
 int		ftpr_parse_args(va_list args, const char *fmt);
 int		ftpr_check_fmt(const char *fmt);
-int		ftpr_compl_is_conv(const char *s);
+int		ftpr_compl_isconv(const char *s);
 int		ftpr_compl_convert(va_list args, const char *fmt, int *r);
 int		ftpr_compl_do_conv(va_list args, char conv, t_flags *flags, \
 int *output);
@@ -66,7 +66,7 @@ int		ftpr_hex_digits(unsigned long n);
 char	*ftpr_hextoa_prefix(unsigned long n);
 
 int		ftpr_is_conversion(const char *s);
-int		ftpr_smpl_is_conv(const char *s);
+int		ftpr_smpl_isconv(const char *s);
 int		ftpr_smpl_convert(va_list args, const char *s, int *r);
 int		ftpr_converter_c(int i);
 int		ftpr_converter_s(char *str);

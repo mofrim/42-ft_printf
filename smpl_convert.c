@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/15 16:29:09 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 08:14:00 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ftpr_is_conversion(const char *s)
 
 #endif /* ifndef BONUS */
 
-int	ftpr_smpl_is_conv(const char *s)
+int	ftpr_smpl_isconv(const char *s)
 {
 	if (!ft_strncmp(s, "%c", 2) || !ft_strncmp(s, "%s", 2) || \
 !ft_strncmp(s, "%p", 2) || !ft_strncmp(s, "%d", 2) || \

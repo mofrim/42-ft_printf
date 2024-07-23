@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:45:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 11:53:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 08:27:29 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 // 	   -1	complex conversion
 int	ftpr_is_conversion(const char *s)
 {
-	if (ftpr_smpl_is_conv(s))
+	if (ftpr_smpl_isconv(s))
 		return (1);
-	if (*s == '%' && ftpr_compl_is_conv(s) == 1)
+	if (*s == '%' && ftpr_compl_isconv(s) == 1)
 		return (-1);
 	return (0);
 }
@@ -57,7 +57,7 @@ int	ftpr_is_conversion(const char *s)
 // 		1	VALID & CORRECT sequence
 // 		0	WRONG or INCOMPLETE but not invalid sequence
 // 	   -1	INVALID sequence -> no output at all, ft_printf returns -1
-int	ftpr_compl_is_conv(const char *s)
+int	ftpr_compl_isconv(const char *s)
 {
 	int	num;
 	int	dot;
