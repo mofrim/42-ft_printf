@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 23:49:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/12 11:21:34 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 07:32:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ char	*ftpr_utoa(unsigned int n)
 	char	*a;
 	int		i;
 
-	a = (char *)malloc(dec(n) * sizeof (char) + 1);
+	i = dec(n);
+	a = (char *)malloc(i * sizeof (char) + 1);
 	if (!a)
 		return (NULL);
-	a[dec(n)] = '\0';
-	i = dec(n);
+	a[i] = '\0';
 	while (--i >= 0)
 	{
 		a[i] = '0' + n % 10;
