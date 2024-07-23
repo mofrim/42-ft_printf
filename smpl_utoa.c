@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 23:49:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 07:32:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 07:38:40 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "ft_printf.h"
 #endif
 
+
+/* Counts and returns num of digits of unsigned int param. */
 static int	dec(unsigned int n)
 {
 	int	d;
@@ -31,6 +33,7 @@ static int	dec(unsigned int n)
 	return (d);
 }
 
+/* Returns digit char string of param unsigned int. */
 char	*ftpr_utoa(unsigned int n)
 {
 	char	*a;
