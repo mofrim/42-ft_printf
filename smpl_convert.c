@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 10:01:15 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 13:03:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 /* Wrapper func for smpl_isconv. Only there for code seperation. */
 int	ftpr_is_conversion(const char *s)
 {
-	if (ftpr_smpl_is_conv(s))
+	if (ftpr_smpl_isconv(s))
 		return (1);
 	return (0);
 }
