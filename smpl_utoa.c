@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 23:49:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 07:38:40 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 07:42:50 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #else
 # include "ft_printf.h"
 #endif
-
 
 /* Counts and returns num of digits of unsigned int param. */
 static int	dec(unsigned int n)
