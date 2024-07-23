@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 11:03:27 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 08:58:46 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 09:03:55 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,15 @@ static char	*hextoa_uint(unsigned int n, int upper);
 
 static int	hex_digits_uint(unsigned int n);
 
-int	ftpr_converter_x(unsigned int i)
+int	ftpr_converter_x(unsigned int i, int upper)
 {
 	char	*num;
 	int		r;
 
-	num = hextoa_uint(i, 0);
-	ft_putstr(num);
-	r = ft_strlen(num);
-	free(num);
-	return (r);
-}
-
-int	ftpr_converter_xupper(unsigned int i)
-{
-	char	*num;
-	int		r;
-
-	num = hextoa_uint(i, 1);
+	if (upper)
+		num = hextoa_uint(i, 1);
+	else
+		num = hextoa_uint(i, 0);
 	ft_putstr(num);
 	r = ft_strlen(num);
 	free(num);

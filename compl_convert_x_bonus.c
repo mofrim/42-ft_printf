@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/20 10:38:39 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 09:05:58 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	ftpr_compl_converter_x(unsigned int i, t_flags *fl, int c)
 	{
 		ftpr_print_zerox(fl->hash, c, i);
 		if (c == 'x')
-			return (ftpr_converter_x(i) + 2 * (i != 0) * fl->hash);
+			return (ftpr_converter_x(i, 0) + 2 * (i != 0) * fl->hash);
 		else
-			return (ftpr_converter_xupper(i) + 2 * (i != 0) * fl->hash);
+			return (ftpr_converter_x(i, 1) + 2 * (i != 0) * fl->hash);
 	}
 	return (r);
 }
@@ -58,9 +58,9 @@ static int	print_left_padded(unsigned int i, t_flags *fl, int c)
 	if (!(fl->zero && fl->hash))
 		ftpr_print_zerox(fl->hash, c, i);
 	if (c == 'x')
-		ftpr_converter_x(i);
+		ftpr_converter_x(i, 0);
 	else
-		ftpr_converter_xupper(i);
+		ftpr_converter_x(i, 1);
 	if (fl->width >= len)
 		return (fl->width);
 	return (len);
@@ -75,9 +75,9 @@ static int	print_right_padded(unsigned int i, t_flags *fl, int c)
 	k = -1;
 	ftpr_print_zerox(fl->hash, c, i);
 	if (c == 'x')
-		ftpr_converter_x(i);
+		ftpr_converter_x(i, 0);
 	else
-		ftpr_converter_xupper(i);
+		ftpr_converter_x(i, 1);
 	if (fl->width > len)
 		while (++k < fl->width - len)
 			ft_putchar(' ');
@@ -96,17 +96,17 @@ static int	print_prec(unsigned int i, t_flags *fl, int c)
 	if (i == 0 && !fl->prec)
 		return (0);
 	if ((fl->prec < len) && (c == 'x'))
-		ftpr_converter_x(i);
+		ftpr_converter_x(i, 0);
 	else if ((fl->prec < len) && (c == 'X'))
-		ftpr_converter_xupper(i);
+		ftpr_converter_x(i, 1);
 	else
 	{
 		while (++k < fl->prec - len)
 			ft_putchar('0');
 		if (c == 'x')
-			ftpr_converter_x(i);
+			ftpr_converter_x(i, 0);
 		else
-			ftpr_converter_xupper(i);
+			ftpr_converter_x(i, 1);
 	}
 	if (fl->prec < len)
 		return (len);
