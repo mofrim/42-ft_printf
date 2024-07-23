@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 10:17:25 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/12 11:21:04 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 08:38:44 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,24 @@
 # include "ft_printf.h"
 #endif
 
-int	ftpr_hex_digits(unsigned long n)
-{
-	int	d;
+static char	*hextoa_prefix(unsigned long n);
 
-	if (!n)
-		return (1);
-	d = 0;
-	while (n)
-	{
-		n /= 16;
-		d++;
-	}
-	return (d);
+// we have to deal with unsigned long values and put them to hex
+int	ftpr_converter_p(unsigned long l)
+{
+	char	*num;
+	int		r;
+
+	num = hextoa_prefix(l);
+	if (!num)
+		return (0);
+	ft_putstr(num);
+	r = ft_strlen(num);
+	free(num);
+	return (r);
 }
 
-char	*ftpr_hextoa_prefix(unsigned long n)
+static char	*hextoa_prefix(unsigned long n)
 {
 	char	*a;
 	int		i;
@@ -56,17 +58,17 @@ char	*ftpr_hextoa_prefix(unsigned long n)
 	return (a);
 }
 
-// we have to deal with unsigned long values and put them to hex
-int	ftpr_converter_p(unsigned long l)
+int	ftpr_hex_digits(unsigned long n)
 {
-	char	*num;
-	int		r;
+	int	d;
 
-	num = ftpr_hextoa_prefix(l);
-	if (!num)
-		return (0);
-	ft_putstr(num);
-	r = ft_strlen(num);
-	free(num);
-	return (r);
+	if (!n)
+		return (1);
+	d = 0;
+	while (n)
+	{
+		n /= 16;
+		d++;
+	}
+	return (d);
 }

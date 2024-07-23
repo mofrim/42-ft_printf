@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 08:27:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 08:33:59 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	ft_putchar(char c);
 void	ft_putstr(char *s);
 char	*ftpr_utoa(unsigned int n);
 int		ftpr_hex_digits(unsigned long n);
-char	*ftpr_hextoa_prefix(unsigned long n);
 
 int		ftpr_is_conversion(const char *s);
 int		ftpr_smpl_isconv(const char *s);

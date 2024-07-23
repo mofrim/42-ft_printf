@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 13:43:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 12:13:12 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 08:32:53 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
  * 			2	if c is a flag char
  * 			3	if c is a digit or dot
  */
-
 int	ftpr_isflagconv(char c)
 {
 	int	rval;
