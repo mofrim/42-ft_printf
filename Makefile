@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/23 12:42:20 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/07/23 13:01:00 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,32 +112,14 @@ $(OBJ_DIR)/bonus-%.o: %.c $(HDR) $(BONUS_HDR) | $(OBJ_DIR)
 bonus: .bonus
 ########################################## bonus end
 
-########################################## tests start
-tests: all tests/test_ftprintf_smpl.c tests/test_ftpr_smpl-func.c
-	cc -o test_ftprintf_smpl tests/test_ftprintf_smpl.c tests/test_ftpr_smpl-func.c libftprintf.a
-	./test_ftprintf_smpl
-
-test: bonus tests/test_ftprintf.c tests/test_ftpr_smpl-func.c
-	cc -DBONUS -o test_ftprintf tests/test_ftprintf.c tests/test_ftpr_smpl-func.c libftprintf.a
-	./test_ftprintf
-
-testf: 
-	cc -o test_printf_flags tests/test_printf_flags.c
-	./test_printf_flags
-
-testclean:
-	rm -f ./test_printf_flags ./test_ftprintf ./test_ftprintf_smpl
-########################################## tests end
-
 clean:
 	make -C $(LIBFT_PATH) clean
 	rm -rf $(OBJ_DIR)
 
-# NOTE: remove testclean before final submission
-fclean: clean testclean
+fclean: clean
 	make -C $(LIBFT_PATH) fclean
 	rm -f $(NAME) $(BONUS_NAME) .mandatory .bonus
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus testclean
+.PHONY: all clean fclean re bonus
