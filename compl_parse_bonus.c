@@ -6,12 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:23:55 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 10:07:55 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:44:13 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
+/* Parse args while scanning fmtstring. Returns number of printed chars. */
 int	ftpr_parse_args(va_list args, const char *fmt)
 {
 	int	c;

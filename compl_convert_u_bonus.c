@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 07:47:01 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:30:10 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	print_prec(unsigned int d, t_flags *fl);
 
 static int	print_prec_width(unsigned int d, t_flags *fl, int nlen);
 
+/* Convert unsigned int with flags "-0 .". */
 int	ftpr_compl_converter_u(unsigned int d, t_flags *fl)
 {
 	int	r;
@@ -37,6 +38,7 @@ int	ftpr_compl_converter_u(unsigned int d, t_flags *fl)
 	return (r);
 }
 
+/* Helper function. Print left padded. */
 static int	print_left_padded(unsigned int d, t_flags *fl)
 {
 	char	*num;
@@ -59,6 +61,7 @@ static int	print_left_padded(unsigned int d, t_flags *fl)
 	return (len + fl->space);
 }
 
+/* Helper function. Print right padded. */
 static int	print_right_padded(unsigned int d, t_flags *fl)
 {
 	char	*num;
@@ -83,6 +86,7 @@ static int	print_right_padded(unsigned int d, t_flags *fl)
 	return (len);
 }
 
+/* Helper function. Print print with precission. */
 static int	print_prec(unsigned int d, t_flags *fl)
 {
 	char	*num;
@@ -106,6 +110,7 @@ static int	print_prec(unsigned int d, t_flags *fl)
 	return (len + fl->space);
 }
 
+/* Helper function. Print with precission & width. */
 static int	print_prec_width(unsigned int d, t_flags *fl, int nlen)
 {
 	int		i;

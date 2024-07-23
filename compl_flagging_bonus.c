@@ -6,12 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:17:08 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 09:49:46 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:39:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
+/* Initialize the t_flags struct with all zeros. */
 t_flags	*init_flags(void)
 {
 	t_flags	*flags;

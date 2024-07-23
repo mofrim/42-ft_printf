@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/21 12:26:37 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:21:36 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	print_right_padded(int c, t_flags *fl);
 
 static int	print_left_padded(int c, t_flags *fl);
 
-/**
+/*
  * Width flag aware conversion of char.
  *
  * @param c The char to be put out
@@ -36,6 +36,7 @@ int	ftpr_compl_converter_c(int c, t_flags *fl)
 	return (r);
 }
 
+/* Helper func. Print right padded. */
 static int	print_right_padded(int c, t_flags *fl)
 {
 	int		i;
@@ -50,6 +51,7 @@ static int	print_right_padded(int c, t_flags *fl)
 	return (1);
 }
 
+/* Helper func. Print left padded. */
 static int	print_left_padded(int c, t_flags *fl)
 {
 	int		i;

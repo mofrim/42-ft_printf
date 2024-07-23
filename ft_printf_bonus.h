@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 10:10:13 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:20:12 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_flags
 	int	space;
 }	t_flags;
 
+// the main functions
 int		ft_printf(const char *f, ...);
 int		ftpr_check_fmt(const char *fmt);
 int		ftpr_parse_args(va_list args, const char *fmt);

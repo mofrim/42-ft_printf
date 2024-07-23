@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 09:05:58 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:34:05 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	print_prec(unsigned int i, t_flags *fl, int c);
 
 static int	print_prec_width(unsigned int i, t_flags *fl, int c);
 
+/* Convert to hex with "-. 0" flags. */
 int	ftpr_compl_converter_x(unsigned int i, t_flags *fl, int c)
 {
 	int	r;
@@ -43,6 +44,7 @@ int	ftpr_compl_converter_x(unsigned int i, t_flags *fl, int c)
 	return (r);
 }
 
+/* Helper function. Print left padded. */
 static int	print_left_padded(unsigned int i, t_flags *fl, int c)
 {
 	int		k;
@@ -66,6 +68,7 @@ static int	print_left_padded(unsigned int i, t_flags *fl, int c)
 	return (len);
 }
 
+/* Helper function. Print right padded. */
 static int	print_right_padded(unsigned int i, t_flags *fl, int c)
 {
 	int		k;
@@ -86,6 +89,7 @@ static int	print_right_padded(unsigned int i, t_flags *fl, int c)
 	return (len);
 }
 
+/* Helper function. Print with precission. */
 static int	print_prec(unsigned int i, t_flags *fl, int c)
 {
 	int		k;
@@ -113,6 +117,7 @@ static int	print_prec(unsigned int i, t_flags *fl, int c)
 	return (fl->prec);
 }
 
+/* Helper function. Print with precission & width. */
 static int	print_prec_width(unsigned int i, t_flags *fl, int c)
 {
 	int		k;

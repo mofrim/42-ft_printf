@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:50:47 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 11:32:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:39:19 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 static int	percent(void);
 
-// TODO: maybe refactor. free flags in here
+/*
+ * Finally really do the conversion.
+ *
+ * Does the conversion specified in param char conv. The number of printed chars
+ * is saved in param int output which will finally be returned from
+ * ftpr_parse_args to main ft_printf func.
+ *
+ */
 int	ftpr_compl_do_conv(va_list args, char conv, t_flags *flags, int *output)
 {
 	if (conv == '%')
@@ -35,6 +42,12 @@ int	ftpr_compl_do_conv(va_list args, char conv, t_flags *flags, int *output)
 	return (0);
 }
 
+/* The sinplest conv ever.
+ *
+ * Still we need this here because there might be any agglomeration of valid
+ * flags in between the first % and the final one.
+ *
+ */
 static int	percent(void)
 {
 	ft_putchar('%');

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/17 22:33:24 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 10:28:18 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	print_prec(char *s, t_flags *fl);
 
 static int	print_prec_width(char *s, t_flags *fl);
 
+/* Convert string with flags "-." prec and width. */
 int	ftpr_compl_converter_s(char *s, t_flags *fl)
 {
 	int	r;
@@ -37,6 +38,7 @@ int	ftpr_compl_converter_s(char *s, t_flags *fl)
 	return (r);
 }
 
+/* Helper function. Print left padded. */
 static int	print_left_padded(char *s, t_flags *fl)
 {
 	int		i;
@@ -56,6 +58,7 @@ static int	print_left_padded(char *s, t_flags *fl)
 	return (len);
 }
 
+/* Helper function. Print right padded. */
 static int	print_right_padded(char *s, t_flags *fl)
 {
 	int		i;
@@ -75,6 +78,7 @@ static int	print_right_padded(char *s, t_flags *fl)
 	return (len);
 }
 
+/* Helper function. Print with precission. */
 static int	print_prec(char *s, t_flags *fl)
 {
 	int		i;
@@ -100,10 +104,13 @@ static int	print_prec(char *s, t_flags *fl)
 	return (len);
 }
 
-// ("%7.7s", NULL) -> outp = ' (null)', ret = 7
-// ("%.7s", NULL) -> outp = '(null)', ret = 6
-// ("%.5s", NULL) -> outp = '', ret = 0
-// ("%7.5s", NULL) -> outp = '       ', ret = 7
+/* Helper function. Print with precission & width. 
+ *
+ * ("%7.7s", NULL) -> outp = ' (null)', ret = 7
+ * ("%.7s", NULL) -> outp = '(null)', ret = 6
+ * ("%.5s", NULL) -> outp = '', ret = 0
+ * ("%7.5s", NULL) -> outp = '       ', ret = 7
+ * */
 static int	print_prec_width(char *s, t_flags *fl)
 {
 	int		i;
