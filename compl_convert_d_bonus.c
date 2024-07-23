@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 12:13:19 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 12:18:21 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static int	print_left_padded(int d, t_flags *fl)
 	return (len + ((fl->plus || fl->space) && (d >= 0)));
 }
 
+// TODO: REFAC: use instrlen here? not ft_itoa and free???
 static int	print_right_padded(int d, t_flags *fl)
 {
 	char	*num;

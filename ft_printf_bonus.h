@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:26:13 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/22 12:13:15 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/22 12:21:00 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ typedef struct s_flags
 	int	space;
 }	t_flags;
 
+//
 // TODO: sort all funcs in order of possible code execution
+//
 
-// compl compl conv conv
-int		ftpr_compl_is_conv(const char *s);
+int		ft_printf(const char *f, ...);
+int		ftpr_parse_args(va_list args, const char *fmt);
 int		ftpr_check_fmt(const char *fmt);
+int		ftpr_compl_is_conv(const char *s);
 int		ftpr_compl_convert(va_list args, const char *fmt, int *r);
 int		ftpr_compl_do_conv(va_list args, char conv, t_flags *flags, \
 int *output);
@@ -61,9 +64,6 @@ void	ft_putstr(char *s);
 char	*ftpr_utoa(unsigned int n);
 int		ftpr_hex_digits(unsigned long n);
 char	*ftpr_hextoa_prefix(unsigned long n);
-
-int		ft_printf(const char *f, ...);
-int		ftpr_parse_args(va_list args, const char *fmt);
 
 int		ftpr_is_conversion(const char *s);
 int		ftpr_smpl_is_conv(const char *s);
