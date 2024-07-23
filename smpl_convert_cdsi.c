@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:18:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/12 11:21:48 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 12:38:18 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ft_printf.h"
 #endif
 
+/* Print smpl 'i' conversion. */
 int	ftpr_converter_i(int i)
 {
 	char	*num;
@@ -28,6 +29,7 @@ int	ftpr_converter_i(int i)
 	return (r);
 }
 
+/* Print smpl 'd' conversion. */
 int	ftpr_converter_d(int i)
 {
 	char	*num;
@@ -40,6 +42,7 @@ int	ftpr_converter_d(int i)
 	return (r);
 }
 
+/* Print smpl 'u' conversion. */
 int	ftpr_converter_u(unsigned int i)
 {
 	char	*num;
@@ -52,12 +55,14 @@ int	ftpr_converter_u(unsigned int i)
 	return (r);
 }
 
+/* Print smpl 'c' conversion. */
 int	ftpr_converter_c(int i)
 {
 	ft_putchar_fd(i, 1);
 	return (1);
 }
 
+/* Print smpl 's' conversion. */
 int	ftpr_converter_s(char *str)
 {
 	if (!str)

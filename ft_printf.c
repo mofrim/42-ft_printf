@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:43:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 10:00:34 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 12:35:58 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "ft_printf.h"
 #endif
 
-/* FT_PRINTF! Supports "diucspxXX" with "0# .-+". */
+/* FT_PRINTF! Supports "diucspxXX" with "0# .-+" & prec & width. */
 int	ft_printf(const char *fmt, ...)
 {
 	va_list	args;
@@ -34,7 +34,7 @@ int	ft_printf(const char *fmt, ...)
 
 #ifndef BONUS
 
-/**
+/*
  * Initial check of format-string for open-end conversion.
  *
  * In mandatory / smpl case we do not know anything about any flags ;) so, the

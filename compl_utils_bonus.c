@@ -6,14 +6,13 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 13:43:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 08:32:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/07/23 12:22:01 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
-#include "libft/libft.h"
 
-/**
+/*
  * Combined flag or conv char testing func.
  *
  * If you want to test for flagconvness f.ex. use `if(ftpr_isflagconv(c))`. If
@@ -42,7 +41,7 @@ c == 'u' || c == 'x' || c == 'X' || c == '%')
 	return (rval);
 }
 
-/**
+/*
  * Convert non-negative string of digits to int. Detect possible int overflow.
  *
  * @return -1 if first char is no digit or if number represented by string is
@@ -78,6 +77,7 @@ int	ftpr_intstrlen(int d)
 	return (ret);
 }
 
+/* Return strlen of unsigned integer converted to ascii string. */
 int	ftpr_uintstrlen(unsigned int d)
 {
 	char	*numstr;
@@ -91,6 +91,7 @@ int	ftpr_uintstrlen(unsigned int d)
 	return (ret);
 }
 
+/* Helper function for printing 0x in #-conversion. */
 void	ftpr_print_zerox(int doit, int c, unsigned int num)
 {
 	if (!doit || !num)
