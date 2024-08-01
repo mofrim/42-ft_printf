@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/07/23 21:13:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/01 14:51:25 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "ft_printf.h"
 #endif
 
-// take this if we are not doing the bonus part.
+/* Take this if we are not doing the bonus part. */
 #ifndef BONUS
 
 /* Wrapper func for smpl_isconv. Only there for code seperation. */
