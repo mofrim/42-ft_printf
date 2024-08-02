@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/23 13:01:00 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/02 08:13:55 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,45 +31,6 @@ SRCS_IN	= ./ft_printf.c \
 					./smpl_convert_x.c \
 					./smpl_convert.c
 
-# stupid little hack, but good for learning some more make voodoo ;)
-# removes leading './' again
-SRCS = $(patsubst ./%,%,$(SRCS_IN))
-
-HDR	= ft_printf.h
-
-OBJ_DIR		= obj
-OBJS			= $(SRCS:%.c=$(OBJ_DIR)/%.o)
-
-LIBFT_PATH	= ./libft
-LIBFT				= $(LIBFT_PATH)/libft.a
-
-# here $(OBJ_DIR) is a 'order-only' prequisite. that means it is only build if
-# it does not exist. not if it was only updated. this is what we want here.
-#
-# another cool thing is also happening here: the $< inside the recipe is only
-# taking all the files from $(SRCS) which is the first prequisite. $(HDR) is
-# only a dependency. this is why noone is trying to compile ft_printf.h
-$(OBJ_DIR)/%.o: %.c $(HDR) | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(PIC) -c $< -o $@
-
-all: $(NAME)
-
-.mandatory: $(OBJS)
-	rm -f .bonus
-	touch .mandatory
-	make -C $(LIBFT_PATH) all
-	cp $(LIBFT) $(NAME)
-	ar -rcs $(NAME) $(OBJS)
-
-$(NAME): .mandatory
-
-$(LIBFT):
-	make -C $(LIBFT_PATH) all
-
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-
-########################################## bonus start
 BONUS_SRCS_IN = ./compl_parse_bonus.c \
 								./compl_check_fmt_bonus.c \
 								./compl_convert_bonus.c \
@@ -84,33 +45,42 @@ BONUS_SRCS_IN = ./compl_parse_bonus.c \
 								./compl_convert_p_bonus.c \
 								./compl_convert_x_bonus.c
 
-# oh! again that stupid little hack.
-BONUS_SRCS = $(patsubst ./%,%,$(BONUS_SRCS_IN)) $(SRCS)
+# stupid little hack, but good for learning some more make voodoo ;)
+# removes leading './' again
+SRCS = $(patsubst ./%,%,$(SRCS_IN)) $(patsubst ./%,%,$(BONUS_SRCS_IN))
 
-# the logic behind choosing different names for bonus-objs is, that it enables
-# us to completely seperate compilation of bonus and mandatory. the real
-# bonus-objs only get compiled into the library because we use $(BONUS_OBJS) as
-# prequisite in $(BONUS_NAME) rule. in $(NAME) rule $(OBJS) is used which
-# does not include any bonus files.
-BONUS_OBJS = $(BONUS_SRCS:%.c=$(OBJ_DIR)/bonus-%.o)
 BONUS_HDR = ft_printf_bonus.h
-BONUS_NAME = libftprintf_bonus.a
+HDR	= ft_printf.h
 
-$(OBJ_DIR)/bonus-%.o: %.c $(HDR) $(BONUS_HDR) | $(OBJ_DIR)
+OBJ_DIR		= obj
+OBJS			= $(SRCS:%.c=$(OBJ_DIR)/%.o)
+
+LIBFT_PATH	= ./libft
+LIBFT				= $(LIBFT_PATH)/libft.a
+
+# here $(OBJ_DIR) is a 'order-only' prequisite. that means it is only build if
+# it does not exist. not if it was only updated. this is what we want here.
+#
+# another cool thing is also happening here: the $< inside the recipe is only
+# taking all the files from $(SRCS) which is the first prequisite. $(HDR) is
+# only a dependency. this is why noone is trying to compile ft_printf.h
+$(OBJ_DIR)/%.o: %.c $(HDR) $(BONUS_HDR) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(PIC) -DBONUS -c $< -o $@
 
-.bonus: $(BONUS_OBJS)
-	rm -f .mandatory
-	touch .bonus
-	make -C $(LIBFT_PATH) all
-	cp $(LIBFT) $(BONUS_NAME)
-	ar -rcs $(BONUS_NAME) $(BONUS_OBJS)
-	mv $(BONUS_NAME) $(NAME)
+all: $(NAME)
 
-# ... this is the missing hack for making even `make bonus` never ever relink.
-# \o/ \o/ \o/
-bonus: .bonus
-########################################## bonus end
+$(NAME): $(OBJS)
+	make -C $(LIBFT_PATH) all
+	cp $(LIBFT) $(NAME)
+	ar -rcs $(NAME) $(OBJS)
+
+$(LIBFT):
+	make -C $(LIBFT_PATH) all
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+bonus: all
 
 clean:
 	make -C $(LIBFT_PATH) clean
@@ -118,7 +88,7 @@ clean:
 
 fclean: clean
 	make -C $(LIBFT_PATH) fclean
-	rm -f $(NAME) $(BONUS_NAME) .mandatory .bonus
+	rm -f $(NAME)
 
 re: fclean all
 
